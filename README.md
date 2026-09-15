@@ -142,3 +142,38 @@ bằng cùng thuật toán trước khi phân loại.
 
 Phần demo không train, chỉnh Rules/ngưỡng, sửa dữ liệu hay checkpoint. Các báo cáo và
 khóa đánh giá final test v03 đã có được giữ nguyên; không chạy lại đánh giá cuối.
+
+## Backend FastAPI (thử nghiệm nội bộ)
+
+Cài vào môi trường NLP hiện có và chạy từ thư mục gốc dự án:
+
+```powershell
+.\.venv-nlp\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv-nlp\Scripts\python.exe -m uvicorn backend.app:app --host 127.0.0.1 --port 8000
+```
+
+Swagger: http://127.0.0.1:8000/docs. Mở `POST /analyze-audio` → **Try it out** →
+chọn file M4A ở trường `file` → **Execute**. `GET /health` cho biết model đã sẵn sàng.
+
+```powershell
+curl.exe -X POST "http://127.0.0.1:8000/analyze-audio" -F "file=@audio/audio_test_9_sentences.m4a"
+```
+
+Hỗ trợ MP3/M4A/WAV/MP4, tối đa 50 MiB mỗi file; file tạm được dọn sau xử lý.
+Whisper small (CPU) và PhoBERT (CUDA nếu có) nạp một lần mỗi lần khởi động.
+Whisper dùng CPU để giữ cả hai model trong bộ nhớ trên máy GPU 4 GB; xử lý sẽ chậm hơn CUDA.
+Chạy **một worker**, không dùng `--reload` khi thử model để tránh nạp nhiều bản.
+Các request suy luận được xử lý tuần tự. Checkpoint lấy từ `pipeline_model.json` và kiểm tra hash.
+CORS chỉ cho localhost/127.0.0.1 cổng 5173. Backend không lưu upload hoặc báo cáo lâu dài.
+
+Response giữ cả ba nhãn: `KHONG_CANH_BAO` có thể ẩn ở frontend,
+`CAN_XAC_MINH` cần kiểm duyệt, `CANH_BAO` ưu tiên cao.
+`final_confidence` là xác suất PhoBERT của nhãn cuối, không phải confidence của Whisper.
+Timestamp ước lượng được đánh dấu `timestamp_is_approximate`; không trả token Whisper.
+Lỗi 400: file thiếu/rỗng/sai định dạng/hỏng; 413: quá lớn; 500: xử lý thất bại.
+
+Test mock backend (dùng httpx đã có trong môi trường phát triển):
+
+```powershell
+.\.venv-nlp\Scripts\python.exe -B -X utf8 -m unittest backend.test_app test_model_config test_audio_demo
+```

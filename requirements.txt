@@ -1,2 +1,4 @@
-# Add project dependencies here.
-
+# Backend only; install into the existing .venv-nlp without upgrading model libraries.
+fastapi
+uvicorn
+python-multipart
