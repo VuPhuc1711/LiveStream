@@ -1,0 +1,20 @@
+{
+  "status": "FROZEN",
+  "frozen_at_utc": "2026-09-15T08:00:25.190373+00:00",
+  "checkpoint": "D:\\livestream-violation-detection\\models\\phobert_v03_20260915_145458_712323\\best",
+  "file_sha256": {
+    "added_tokens.json": "6887f87ac991379ea91aedb4dd5e1af4f6ee38693ec0ca1c2b6209559ce283d8",
+    "bpe.codes": "9dfe53fb8abbddd3387da99641c36e00bee757a3679aad9cf0a7cdc4b30f6ef8",
+    "config.json": "a812a4f5f09d84101bd97e7b93cd44bf85c5a460d4b54581e70d680b6229c8bc",
+    "model.safetensors": "33bae82dacb784347ae5a57b2af071848f2a90277ad3c4aa86ed1cfb5b4c2c5d",
+    "preprocessing.json": "1ba139091612004371d98ce1bbbcc28fe95fc83825a07ff2fe79c181250fe6b9",
+    "tokenizer_config.json": "551c1e392c11bda377e643e1481e0e5b0bb42e3589dd36f998ff3bc897841974",
+    "training_config.json": "d09a0dbb2ae34547402a353a3b8e3055653d22eb8fde731d214ff540b0115a8e",
+    "validation_metrics.json": "8de2f940de64b6488039c38ef7f6eb018a79fc48f43e62799df9a11434103ae6",
+    "vocab.txt": "dffd7543c401fb6567253ae7c3313004532c33d062525250049c616544bad777"
+  },
+  "selected_experiment": "E1",
+  "selection_reason": "Validation macro-F1, tie lower CE loss.",
+  "benchmark_used_for_selection": false,
+  "stability_seed_policy": "Seed 123 is diagnostic only, not used to replace the seed-42 selection."
+}

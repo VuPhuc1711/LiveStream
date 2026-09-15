@@ -1,0 +1,47 @@
+{
+  "experiment": "E3",
+  "seed": 42,
+  "loss": "ce",
+  "class_weights": {
+    "KHONG_CANH_BAO": 1.0,
+    "CAN_XAC_MINH": 1.0,
+    "CANH_BAO": 1.0
+  },
+  "class_weight_source": "train.csv only",
+  "class_weight_formula": "inverse sqrt(count), normalized to mean 1",
+  "train_label_counts": {
+    "CANH_BAO": 59,
+    "CAN_XAC_MINH": 46,
+    "KHONG_CANH_BAO": 63
+  },
+  "learning_rate": 1e-05,
+  "batch_size": 1,
+  "gradient_accumulation": 8,
+  "effective_batch_size": 8,
+  "max_epochs": 8,
+  "early_stopping_patience": 2,
+  "max_length": 128,
+  "model": "vinai/phobert-base",
+  "base_revision": "01daacda68afe13d83023d16ec647239e344a1e6",
+  "initialized_from_finetuned_checkpoint": false,
+  "optimizer": "AdamW",
+  "weight_decay": 0.01,
+  "gradient_clip_norm": 1.0,
+  "scheduler": null,
+  "gradient_checkpointing": true,
+  "mixed_precision": "fp16",
+  "tokenizer_use_fast": false,
+  "device": "cuda",
+  "deterministic_algorithms": "warn_only",
+  "validation_loss": "unweighted mean CE for comparable tie breaks; weighted loss also recorded",
+  "weighted_loss_reduction": "sum(weight[y]*CE)/sum(weight[y]) across each full accumulation group",
+  "selection": "highest macro-F1, then lowest unweighted validation loss",
+  "early_stopping": "strict macro-F1 improvement resets patience; equal F1 does not",
+  "versions": {
+    "torch": "2.13.0+cu126",
+    "transformers": "5.16.1",
+    "underthesea": "9.5.0",
+    "numpy": "2.4.6",
+    "scikit-learn": "1.9.0"
+  }
+}

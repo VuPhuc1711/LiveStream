@@ -1,0 +1,31 @@
+﻿id,text,label,prediction,correct
+LS0142,"Không có kết quả kiểm nghiệm nhưng em khẳng định kem hãng X gây bệnh, chuyển sang kem em đi.",CANH_BAO,CANH_BAO,True
+LS0144,"Mình cần đọc thành phần, không nên tự suy ra sản phẩm hãng khác gây bệnh.",KHONG_CANH_BAO,KHONG_CANH_BAO,True
+LS0031,"Kem dưỡng này bôi một lần là da trắng vĩnh viễn, ai dùng cũng được như nhau.",CANH_BAO,CANH_BAO,True
+LS0100,Không có bác sĩ nào giới thiệu nhưng em vẫn nói bệnh viện bảo chứng cho chai này.,CANH_BAO,CANH_BAO,True
+LS0001,"Không có bảng xếp hạng nào đâu, nhưng em cứ khẳng định chai này top 1 toàn châu Á cho các bác chốt.",CANH_BAO,CANH_BAO,True
+LS0030,"Có bạn bình luận khách dùng khỏi bệnh, nhưng bình luận đó chưa phải bằng chứng về sản phẩm.",KHONG_CANH_BAO,KHONG_CANH_BAO,True
+LS0121,Shop không nhận đổi trả nhưng em vẫn hứa mua xong đổi vô tư bất cứ lúc nào.,CANH_BAO,CANH_BAO,True
+LS0059,Mã nước lau này không có chất độc hại theo quảng cáo của nhà phân phối.,CAN_XAC_MINH,KHONG_CANH_BAO,False
+LS0002,Chai này top 1 ngành hàng luôn nha cả nhà.,CAN_XAC_MINH,CAN_XAC_MINH,True
+LS0003,"Chai này nằm trong top 1 món em thích nhất ở nhà, đó là sở thích riêng của em.",KHONG_CANH_BAO,KHONG_CANH_BAO,True
+LS0029,"Khách nhắn đã khỏi rồi, để em tìm lại đoạn họ nói về sản phẩm nào.",CAN_XAC_MINH,KHONG_CANH_BAO,False
+LS0075,"Giá thấp do chương trình đang hiển thị trong giỏ, không phải sàn lỗi giá.",KHONG_CANH_BAO,KHONG_CANH_BAO,True
+LS0082,Quà đã hết kho nhưng em vẫn hứa tất cả đơn mới đều chắc chắn có quà.,CANH_BAO,CANH_BAO,True
+LS0122,Mã này bao đổi trả không cần lý do nha.,CAN_XAC_MINH,CAN_XAC_MINH,True
+LS0060,"Nước lau sàn chỉ dùng theo hướng dẫn, không được hiểu quảng cáo không hóa chất là uống được.",KHONG_CANH_BAO,KHONG_CANH_BAO,True
+LS0032,Bôi mã này một lượt là trắng bật tông luôn.,CAN_XAC_MINH,CAN_XAC_MINH,True
+LS0073,Không có lỗi hệ thống đâu nhưng em bịa là sàn lỗi giá để mọi người tranh nhau chốt.,CANH_BAO,CANH_BAO,True
+LS0113,"Đồng hồ này chống nước, đeo đi bơi được nha.",CAN_XAC_MINH,CAN_XAC_MINH,True
+LS0074,"Hình như sàn lỗi giá, các bác đặt nhanh trước khi sửa.",CAN_XAC_MINH,CANH_BAO,False
+LS0084,"Đơn nào hiển thị túi tặng trong chương trình mới có quà, các bác xem điều kiện giúp em.",KHONG_CANH_BAO,KHONG_CANH_BAO,True
+LS0083,Chốt hôm nay là được tặng thêm một túi nhé.,CAN_XAC_MINH,CAN_XAC_MINH,True
+LS0114,Đừng hiểu chống nước là ngâm bao lâu cũng được; cần đọc đúng giới hạn của mẫu này.,KHONG_CANH_BAO,KHONG_CANH_BAO,True
+LS0028,"Khách em dùng nước ép này khỏi ung thư rồi, chị mua là cũng khỏi như vậy.",CANH_BAO,CANH_BAO,True
+LS0112,Máy không có khả năng chống nước nhưng em bảo ngâm thoải mái không bao giờ hỏng.,CANH_BAO,CANH_BAO,True
+LS0058,"Nước lau sàn này uống cũng được vì không có hóa chất nào, bảo đảm an toàn tuyệt đối.",CANH_BAO,CANH_BAO,True
+LS0102,Tên bác sĩ trong câu hỏi của khách không có nghĩa bác sĩ đó khuyên dùng sản phẩm này.,KHONG_CANH_BAO,KHONG_CANH_BAO,True
+LS0123,"Đổi trả theo điều kiện hiển thị của đơn hàng, em không hứa đổi vô tư mọi trường hợp.",KHONG_CANH_BAO,KHONG_CANH_BAO,True
+LS0101,Sản phẩm này bác sĩ khuyên dùng nha chị.,CAN_XAC_MINH,CAN_XAC_MINH,True
+LS0033,"Đây là kem nền, màu da nhìn sáng hơn tạm thời và lớp màu sẽ trôi khi tẩy trang.",KHONG_CANH_BAO,KHONG_CANH_BAO,True
+LS0143,Sản phẩm của hãng kia có thành phần cần kiểm tra thêm.,KHONG_CANH_BAO,CAN_XAC_MINH,False

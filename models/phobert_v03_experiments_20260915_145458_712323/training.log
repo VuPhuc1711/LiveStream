@@ -1,0 +1,118 @@
+EXPERIMENT_DIRECTORY D:\livestream-violation-detection\models\phobert_v03_experiments_20260915_145458_712323
+GPU NVIDIA GeForce RTX 3050 Ti Laptop GPU
+BEGIN E1 seed=42 loss=ce lr=2e-05 device=cuda
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 18955.24it/s]
+E1 epoch=1 update=7/21
+E1 epoch=1 update=14/21
+E1 epoch=1 update=21/21
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.88it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.88it/s]
+EPOCH E1 1: loss=1.014957 accuracy=0.619048 macro_F1=0.519765
+E1 epoch=2 update=7/21
+E1 epoch=2 update=14/21
+E1 epoch=2 update=21/21
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.39it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.39it/s]
+EPOCH E1 2: loss=0.798046 accuracy=0.833333 macro_F1=0.830079
+E1 epoch=3 update=7/21
+E1 epoch=3 update=14/21
+E1 epoch=3 update=21/21
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.33it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.33it/s]
+EPOCH E1 3: loss=0.578568 accuracy=0.857143 macro_F1=0.850267
+E1 epoch=4 update=7/21
+E1 epoch=4 update=14/21
+E1 epoch=4 update=21/21
+EPOCH E1 4: loss=0.379518 accuracy=0.857143 macro_F1=0.847092
+E1 epoch=5 update=7/21
+E1 epoch=5 update=14/21
+E1 epoch=5 update=21/21
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.99it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.99it/s]
+EPOCH E1 5: loss=0.269122 accuracy=0.952381 macro_F1=0.952137
+BEGIN E2 seed=42 loss=weighted_ce lr=2e-05 device=cuda
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 16428.63it/s]
+E2 epoch=1 update=7/21
+E2 epoch=1 update=14/21
+E2 epoch=1 update=21/21
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.24it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.24it/s]
+EPOCH E2 1: loss=1.009658 accuracy=0.642857 macro_F1=0.538828
+E2 epoch=2 update=7/21
+E2 epoch=2 update=14/21
+E2 epoch=2 update=21/21
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.06it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.06it/s]
+EPOCH E2 2: loss=0.810242 accuracy=0.809524 macro_F1=0.802690
+E2 epoch=3 update=7/21
+E2 epoch=3 update=14/21
+E2 epoch=3 update=21/21
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.36it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.36it/s]
+EPOCH E2 3: loss=0.599154 accuracy=0.880952 macro_F1=0.877031
+E2 epoch=4 update=7/21
+E2 epoch=4 update=14/21
+E2 epoch=4 update=21/21
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.73it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.73it/s]
+EPOCH E2 4: loss=0.399361 accuracy=0.904762 macro_F1=0.902778
+E2 epoch=5 update=7/21
+E2 epoch=5 update=14/21
+E2 epoch=5 update=21/21
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.60it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.60it/s]
+EPOCH E2 5: loss=0.291616 accuracy=0.952381 macro_F1=0.952137
+BEGIN E3 seed=42 loss=ce lr=1e-05 device=cuda
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 17053.18it/s]
+E3 epoch=1 update=7/21
+E3 epoch=1 update=14/21
+E3 epoch=1 update=21/21
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.02s/it]Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.02s/it]
+EPOCH E3 1: loss=1.055521 accuracy=0.428571 macro_F1=0.324848
+E3 epoch=2 update=7/21
+E3 epoch=2 update=14/21
+E3 epoch=2 update=21/21
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.74it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.74it/s]
+EPOCH E3 2: loss=0.972069 accuracy=0.642857 macro_F1=0.593864
+E3 epoch=3 update=7/21
+E3 epoch=3 update=14/21
+E3 epoch=3 update=21/21
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.54it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.54it/s]
+EPOCH E3 3: loss=0.868133 accuracy=0.761905 macro_F1=0.714325
+E3 epoch=4 update=7/21
+E3 epoch=4 update=14/21
+E3 epoch=4 update=21/21
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.14it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.14it/s]
+EPOCH E3 4: loss=0.748778 accuracy=0.809524 macro_F1=0.783904
+E3 epoch=5 update=7/21
+E3 epoch=5 update=14/21
+E3 epoch=5 update=21/21
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.88it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.87it/s]
+EPOCH E3 5: loss=0.587166 accuracy=0.904762 macro_F1=0.902778
+E3 epoch=6 update=7/21
+E3 epoch=6 update=14/21
+E3 epoch=6 update=21/21
+EPOCH E3 6: loss=0.537489 accuracy=0.809524 macro_F1=0.785621
+E3 epoch=7 update=7/21
+E3 epoch=7 update=14/21
+E3 epoch=7 update=21/21
+EPOCH E3 7: loss=0.374470 accuracy=0.880952 macro_F1=0.874375
+BEGIN E1_seed123 seed=123 loss=ce lr=2e-05 device=cuda
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 16573.29it/s]
+E1_seed123 epoch=1 update=7/21
+E1_seed123 epoch=1 update=14/21
+E1_seed123 epoch=1 update=21/21
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.06it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.06it/s]
+EPOCH E1_seed123 1: loss=0.984313 accuracy=0.595238 macro_F1=0.478557
+E1_seed123 epoch=2 update=7/21
+E1_seed123 epoch=2 update=14/21
+E1_seed123 epoch=2 update=21/21
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.46it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.46it/s]
+EPOCH E1_seed123 2: loss=0.711771 accuracy=0.857143 macro_F1=0.853816
+E1_seed123 epoch=3 update=7/21
+E1_seed123 epoch=3 update=14/21
+E1_seed123 epoch=3 update=21/21
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.99it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.99it/s]
+EPOCH E1_seed123 3: loss=0.506817 accuracy=0.880952 macro_F1=0.877266
+E1_seed123 epoch=4 update=7/21
+E1_seed123 epoch=4 update=14/21
+E1_seed123 epoch=4 update=21/21
+EPOCH E1_seed123 4: loss=0.388954 accuracy=0.857143 macro_F1=0.856367
+E1_seed123 epoch=5 update=7/21
+E1_seed123 epoch=5 update=14/21
+E1_seed123 epoch=5 update=21/21
+EPOCH E1_seed123 5: loss=0.457629 accuracy=0.833333 macro_F1=0.816162
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 6705.18it/s]
+OFFICIAL_CHECKPOINT D:\livestream-violation-detection\models\phobert_v03_20260915_145458_712323\best
+COMPARISON_SUMMARY D:\livestream-violation-detection\models\phobert_v03_experiments_20260915_145458_712323\comparison_summary.json

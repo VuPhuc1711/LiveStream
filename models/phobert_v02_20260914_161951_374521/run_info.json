@@ -1,0 +1,9 @@
+{
+  "status": "failed_before_training",
+  "model": "vinai/phobert-base",
+  "base_revision": "01daacda68afe13d83023d16ec647239e344a1e6",
+  "completed_epochs": 0,
+  "optimizer_steps": 0,
+  "reason": "Transformers loading_info returned sets; metadata JSON serialization failed before the training loop. Fixed by sorting keys into lists.",
+  "test_used": false
+}

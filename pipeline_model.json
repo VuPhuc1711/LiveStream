@@ -1,0 +1,5 @@
+{
+  "version": "v03",
+  "checkpoint": "models/phobert_v03_20260915_145458_712323/best",
+  "promotion_protocol": "reports/final_test_v04/evaluation_protocol.json"
+}

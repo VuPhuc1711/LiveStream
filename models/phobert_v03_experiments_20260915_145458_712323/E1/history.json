@@ -1,0 +1,272 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 1.0752306527325086,
+    "validation_loss": 1.0149573783079784,
+    "weighted_validation_loss": 1.0149573783079784,
+    "accuracy": 0.6190476190476191,
+    "macro_precision": 0.7399355877616748,
+    "macro_recall": 0.5813492063492064,
+    "macro_f1": 0.5197649572649573,
+    "per_label": {
+      "KHONG_CANH_BAO": {
+        "precision": 0.6086956521739131,
+        "recall": 0.875,
+        "f1-score": 0.717948717948718,
+        "support": 16.0
+      },
+      "CAN_XAC_MINH": {
+        "precision": 1.0,
+        "recall": 0.08333333333333333,
+        "f1-score": 0.15384615384615385,
+        "support": 12.0
+      },
+      "CANH_BAO": {
+        "precision": 0.6111111111111112,
+        "recall": 0.7857142857142857,
+        "f1-score": 0.6875,
+        "support": 14.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        14,
+        0,
+        2
+      ],
+      [
+        6,
+        1,
+        5
+      ],
+      [
+        3,
+        0,
+        11
+      ]
+    ],
+    "label_order": [
+      "KHONG_CANH_BAO",
+      "CAN_XAC_MINH",
+      "CANH_BAO"
+    ],
+    "matrix_rows": "true",
+    "matrix_columns": "predicted"
+  },
+  {
+    "epoch": 2,
+    "train_loss": 0.9247820930821555,
+    "validation_loss": 0.7980460822582245,
+    "weighted_validation_loss": 0.7980460822582245,
+    "accuracy": 0.8333333333333334,
+    "macro_precision": 0.8456140350877193,
+    "macro_recall": 0.8234126984126983,
+    "macro_f1": 0.8300785634118967,
+    "per_label": {
+      "KHONG_CANH_BAO": {
+        "precision": 0.7368421052631579,
+        "recall": 0.875,
+        "f1-score": 0.8,
+        "support": 16.0
+      },
+      "CAN_XAC_MINH": {
+        "precision": 0.8,
+        "recall": 0.6666666666666666,
+        "f1-score": 0.7272727272727273,
+        "support": 12.0
+      },
+      "CANH_BAO": {
+        "precision": 1.0,
+        "recall": 0.9285714285714286,
+        "f1-score": 0.9629629629629629,
+        "support": 14.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        14,
+        2,
+        0
+      ],
+      [
+        4,
+        8,
+        0
+      ],
+      [
+        1,
+        0,
+        13
+      ]
+    ],
+    "label_order": [
+      "KHONG_CANH_BAO",
+      "CAN_XAC_MINH",
+      "CANH_BAO"
+    ],
+    "matrix_rows": "true",
+    "matrix_columns": "predicted"
+  },
+  {
+    "epoch": 3,
+    "train_loss": 0.7225729225292092,
+    "validation_loss": 0.5785676546040035,
+    "weighted_validation_loss": 0.5785676546040035,
+    "accuracy": 0.8571428571428571,
+    "macro_precision": 0.8592592592592593,
+    "macro_recall": 0.8472222222222222,
+    "macro_f1": 0.8502673796791443,
+    "per_label": {
+      "KHONG_CANH_BAO": {
+        "precision": 0.7777777777777778,
+        "recall": 0.875,
+        "f1-score": 0.8235294117647058,
+        "support": 16.0
+      },
+      "CAN_XAC_MINH": {
+        "precision": 0.8,
+        "recall": 0.6666666666666666,
+        "f1-score": 0.7272727272727273,
+        "support": 12.0
+      },
+      "CANH_BAO": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 14.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        14,
+        2,
+        0
+      ],
+      [
+        4,
+        8,
+        0
+      ],
+      [
+        0,
+        0,
+        14
+      ]
+    ],
+    "label_order": [
+      "KHONG_CANH_BAO",
+      "CAN_XAC_MINH",
+      "CANH_BAO"
+    ],
+    "matrix_rows": "true",
+    "matrix_columns": "predicted"
+  },
+  {
+    "epoch": 4,
+    "train_loss": 0.4516655594287884,
+    "validation_loss": 0.3795177803507873,
+    "weighted_validation_loss": 0.3795177803507873,
+    "accuracy": 0.8571428571428571,
+    "macro_precision": 0.8522875816993464,
+    "macro_recall": 0.8472222222222222,
+    "macro_f1": 0.8470916057122954,
+    "per_label": {
+      "KHONG_CANH_BAO": {
+        "precision": 0.8235294117647058,
+        "recall": 0.875,
+        "f1-score": 0.8484848484848485,
+        "support": 16.0
+      },
+      "CAN_XAC_MINH": {
+        "precision": 0.8,
+        "recall": 0.6666666666666666,
+        "f1-score": 0.7272727272727273,
+        "support": 12.0
+      },
+      "CANH_BAO": {
+        "precision": 0.9333333333333333,
+        "recall": 1.0,
+        "f1-score": 0.9655172413793104,
+        "support": 14.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        14,
+        2,
+        0
+      ],
+      [
+        3,
+        8,
+        1
+      ],
+      [
+        0,
+        0,
+        14
+      ]
+    ],
+    "label_order": [
+      "KHONG_CANH_BAO",
+      "CAN_XAC_MINH",
+      "CANH_BAO"
+    ],
+    "matrix_rows": "true",
+    "matrix_columns": "predicted"
+  },
+  {
+    "epoch": 5,
+    "train_loss": 0.22695081432660422,
+    "validation_loss": 0.26912169672903563,
+    "weighted_validation_loss": 0.26912169672903563,
+    "accuracy": 0.9523809523809523,
+    "macro_precision": 0.9523809523809524,
+    "macro_recall": 0.9583333333333334,
+    "macro_f1": 0.9521367521367522,
+    "per_label": {
+      "KHONG_CANH_BAO": {
+        "precision": 1.0,
+        "recall": 0.875,
+        "f1-score": 0.9333333333333333,
+        "support": 16.0
+      },
+      "CAN_XAC_MINH": {
+        "precision": 0.8571428571428571,
+        "recall": 1.0,
+        "f1-score": 0.9230769230769231,
+        "support": 12.0
+      },
+      "CANH_BAO": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 14.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        14,
+        2,
+        0
+      ],
+      [
+        0,
+        12,
+        0
+      ],
+      [
+        0,
+        0,
+        14
+      ]
+    ],
+    "label_order": [
+      "KHONG_CANH_BAO",
+      "CAN_XAC_MINH",
+      "CANH_BAO"
+    ],
+    "matrix_rows": "true",
+    "matrix_columns": "predicted"
+  }
+]

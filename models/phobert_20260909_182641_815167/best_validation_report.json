@@ -1,0 +1,64 @@
+{
+  "epoch": 5,
+  "train_loss": 0.3830539279513889,
+  "validation_loss": 0.4268310546875,
+  "validation_accuracy": 0.8666666666666667,
+  "validation_macro_f1": 0.8573153899240854,
+  "classification_report": {
+    "KHONG_CANH_BAO": {
+      "precision": 0.8333333333333334,
+      "recall": 0.9090909090909091,
+      "f1-score": 0.8695652173913043,
+      "support": 11.0
+    },
+    "CAN_XAC_MINH": {
+      "precision": 0.8571428571428571,
+      "recall": 0.6666666666666666,
+      "f1-score": 0.75,
+      "support": 9.0
+    },
+    "CANH_BAO": {
+      "precision": 0.9090909090909091,
+      "recall": 1.0,
+      "f1-score": 0.9523809523809523,
+      "support": 10.0
+    },
+    "accuracy": 0.8666666666666667,
+    "macro avg": {
+      "precision": 0.8665223665223665,
+      "recall": 0.8585858585858586,
+      "f1-score": 0.8573153899240854,
+      "support": 30.0
+    },
+    "weighted avg": {
+      "precision": 0.8657287157287157,
+      "recall": 0.8666666666666667,
+      "f1-score": 0.8613008971704623,
+      "support": 30.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      10,
+      1,
+      0
+    ],
+    [
+      2,
+      6,
+      1
+    ],
+    [
+      0,
+      0,
+      10
+    ]
+  ],
+  "matrix_label_order": [
+    "KHONG_CANH_BAO",
+    "CAN_XAC_MINH",
+    "CANH_BAO"
+  ],
+  "matrix_rows": "true",
+  "matrix_columns": "predicted"
+}

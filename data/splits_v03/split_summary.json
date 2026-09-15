@@ -1,0 +1,123 @@
+{
+  "valid": true,
+  "excel_headers": [
+    {
+      "sheet": "candidates_v03_reviewed",
+      "header_row": 2,
+      "ignored_prefix_rows": 1
+    }
+  ],
+  "ignored_empty_sheets": [
+    "Sheet1"
+  ],
+  "approved_rows": 60,
+  "label_changes": [],
+  "text_changes": [],
+  "review_notes_filled": 60,
+  "asr_checks": [
+    {
+      "id": "CV03_001",
+      "unchanged_approved_pair": true,
+      "negation_preserved": true,
+      "semantic_review": "Same original near-sound replacement in non-decisive noun; claims/numbers/fraud cues preserved."
+    },
+    {
+      "id": "CV03_004",
+      "unchanged_approved_pair": true,
+      "negation_preserved": true,
+      "semantic_review": "Same original near-sound replacement in non-decisive noun; claims/numbers/fraud cues preserved."
+    },
+    {
+      "id": "CV03_008",
+      "unchanged_approved_pair": true,
+      "negation_preserved": true,
+      "semantic_review": "Same original near-sound replacement in non-decisive noun; claims/numbers/fraud cues preserved."
+    },
+    {
+      "id": "CV03_012",
+      "unchanged_approved_pair": true,
+      "negation_preserved": true,
+      "semantic_review": "Same original near-sound replacement in non-decisive noun; claims/numbers/fraud cues preserved."
+    },
+    {
+      "id": "CV03_017",
+      "unchanged_approved_pair": true,
+      "negation_preserved": true,
+      "semantic_review": "Same original near-sound replacement in non-decisive noun; claims/numbers/fraud cues preserved."
+    },
+    {
+      "id": "CV03_020",
+      "unchanged_approved_pair": true,
+      "negation_preserved": true,
+      "semantic_review": "Same original near-sound replacement in non-decisive noun; claims/numbers/fraud cues preserved."
+    },
+    {
+      "id": "CV03_024",
+      "unchanged_approved_pair": true,
+      "negation_preserved": true,
+      "semantic_review": "Same original near-sound replacement in non-decisive noun; claims/numbers/fraud cues preserved."
+    },
+    {
+      "id": "CV03_030",
+      "unchanged_approved_pair": true,
+      "negation_preserved": true,
+      "semantic_review": "Same original near-sound replacement in non-decisive noun; claims/numbers/fraud cues preserved."
+    },
+    {
+      "id": "CV03_052",
+      "unchanged_approved_pair": true,
+      "negation_preserved": true,
+      "semantic_review": "Same original near-sound replacement in non-decisive noun; claims/numbers/fraud cues preserved."
+    },
+    {
+      "id": "CV03_055",
+      "unchanged_approved_pair": true,
+      "negation_preserved": true,
+      "semantic_review": "Same original near-sound replacement in non-decisive noun; claims/numbers/fraud cues preserved."
+    }
+  ],
+  "seed": 42,
+  "new_train_families": [
+    "CV03_F002",
+    "CV03_F003",
+    "CV03_F005",
+    "CV03_F006",
+    "CV03_F007",
+    "CV03_F010",
+    "CV03_F011",
+    "CV03_F012",
+    "CV03_F013",
+    "CV03_F014",
+    "CV03_F015",
+    "CV03_F016",
+    "CV03_F017",
+    "CV03_F018",
+    "CV03_F019",
+    "CV03_F020"
+  ],
+  "new_validation_families": [
+    "CV03_F001",
+    "CV03_F004",
+    "CV03_F008",
+    "CV03_F009"
+  ],
+  "split_method": "random.Random(42).shuffle(sorted families), first 16 train; original v02 membership preserved",
+  "leakage_checks_passed": true,
+  "clean_reference_used_as_training_row": false,
+  "train": {
+    "rows": 168,
+    "labels": {
+      "CANH_BAO": 59,
+      "CAN_XAC_MINH": 46,
+      "KHONG_CANH_BAO": 63
+    }
+  },
+  "validation": {
+    "rows": 42,
+    "labels": {
+      "CANH_BAO": 14,
+      "CAN_XAC_MINH": 12,
+      "KHONG_CANH_BAO": 16
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "status": "FROZEN",
+  "frozen_at_utc": "2026-09-14T09:22:41.890455+00:00",
+  "checkpoint": "D:\\livestream-violation-detection\\models\\phobert_v02_20260914_162150_178711\\best",
+  "base_model": "vinai/phobert-base",
+  "base_revision": "01daacda68afe13d83023d16ec647239e344a1e6",
+  "selection": "highest validation macro F1; tie -> lower validation loss",
+  "selected_validation_result": {
+    "epoch": 5,
+    "train_loss": 0.34925587972005206,
+    "validation_loss": 0.37335205078125,
+    "validation_accuracy": 0.9,
+    "validation_macro_f1": 0.8950004244121891
+  },
+  "artifact_sha256": {
+    "best\\added_tokens.json": "6887f87ac991379ea91aedb4dd5e1af4f6ee38693ec0ca1c2b6209559ce283d8",
+    "best\\bpe.codes": "9dfe53fb8abbddd3387da99641c36e00bee757a3679aad9cf0a7cdc4b30f6ef8",
+    "best\\config.json": "a812a4f5f09d84101bd97e7b93cd44bf85c5a460d4b54581e70d680b6229c8bc",
+    "best\\model.safetensors": "fef1b0c901e60874d8d802afad1454878110dc17c587f01936375a6ca8663268",
+    "best\\preprocessing.json": "433d3121fce452982e4837d98847a54e1c2c926a64251607f17aaaa5abbb7714",
+    "best\\tokenizer_config.json": "551c1e392c11bda377e643e1481e0e5b0bb42e3589dd36f998ff3bc897841974",
+    "best\\vocab.txt": "dffd7543c401fb6567253ae7c3313004532c33d062525250049c616544bad777",
+    "run_info.json": "f4655abe2eb52f3e5011f59fd4bd5652c5fb2062c2ef9f713a57a572d2236b36",
+    "history.json": "cd17150578b06ae04c2699158536dd3601ced8b1df012af427d69ba0e9b55391",
+    "best_validation_report.json": "27b3dd3c26f20192fe7b4635fb1d9449877134fdd41e321c0e711ea95c9ed6ef",
+    "validation_predictions.csv": "0bbfb0dd1201405be8b8b8fe36ea83c8db07ce8bf51579ef2facf58c98d85669"
+  },
+  "final_test_sha256": "7b6114a9e7d6e569fd9e28d09e3f655becd8297fed7771e5704741766523b253",
+  "final_test_evaluated": false
+}

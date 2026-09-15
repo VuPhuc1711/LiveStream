@@ -1,0 +1,66 @@
+# Python virtual environments
+.venv/
+.venv-nlp/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Large machine-learning weights
+models/**/model.safetensors
+models/**/pytorch_model.bin
+models/**/optimizer.pt
+models/**/scheduler.pt
+models/**/training_args.bin
+models/**/rng_state*.pth
+*.ckpt
+*.pt
+*.pth
+*.onnx
+
+# Audio and video
+audio/*.mp3
+audio/*.m4a
+audio/*.wav
+audio/*.webm
+audio/*.mp4
+
+# Generated reports and temporary outputs
+reports/
+outputs/
+temp/
+tmp/
+uploads/
+
+# IDE and operating system
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Archives
+*.zip
+*.rar
+*.7z
+
+# Frontend files for later
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Backend runtime files for later
+backend/uploads/
+backend/temp/

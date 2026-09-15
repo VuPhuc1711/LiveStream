@@ -1,0 +1,2870 @@
+{
+  "status": "COMPARISON_COMPLETED",
+  "experiments": [
+    {
+      "name": "E1",
+      "checkpoint": "D:\\livestream-violation-detection\\models\\phobert_v03_experiments_20260915_145458_712323\\E1\\best",
+      "configuration": {
+        "experiment": "E1",
+        "seed": 42,
+        "loss": "ce",
+        "class_weights": {
+          "KHONG_CANH_BAO": 1.0,
+          "CAN_XAC_MINH": 1.0,
+          "CANH_BAO": 1.0
+        },
+        "class_weight_source": "train.csv only",
+        "class_weight_formula": "inverse sqrt(count), normalized to mean 1",
+        "train_label_counts": {
+          "CANH_BAO": 59,
+          "CAN_XAC_MINH": 46,
+          "KHONG_CANH_BAO": 63
+        },
+        "learning_rate": 2e-05,
+        "batch_size": 1,
+        "gradient_accumulation": 8,
+        "effective_batch_size": 8,
+        "max_epochs": 5,
+        "early_stopping_patience": null,
+        "max_length": 128,
+        "model": "vinai/phobert-base",
+        "base_revision": "01daacda68afe13d83023d16ec647239e344a1e6",
+        "initialized_from_finetuned_checkpoint": false,
+        "optimizer": "AdamW",
+        "weight_decay": 0.01,
+        "gradient_clip_norm": 1.0,
+        "scheduler": null,
+        "gradient_checkpointing": true,
+        "mixed_precision": "fp16",
+        "tokenizer_use_fast": false,
+        "device": "cuda",
+        "deterministic_algorithms": "warn_only",
+        "validation_loss": "unweighted mean CE for comparable tie breaks; weighted loss also recorded",
+        "weighted_loss_reduction": "sum(weight[y]*CE)/sum(weight[y]) across each full accumulation group",
+        "selection": "highest macro-F1, then lowest unweighted validation loss",
+        "early_stopping": "strict macro-F1 improvement resets patience; equal F1 does not",
+        "versions": {
+          "torch": "2.13.0+cu126",
+          "transformers": "5.16.1",
+          "underthesea": "9.5.0",
+          "numpy": "2.4.6",
+          "scikit-learn": "1.9.0"
+        }
+      },
+      "best": {
+        "epoch": 5,
+        "train_loss": 0.22695081432660422,
+        "validation_loss": 0.26912169672903563,
+        "weighted_validation_loss": 0.26912169672903563,
+        "accuracy": 0.9523809523809523,
+        "macro_precision": 0.9523809523809524,
+        "macro_recall": 0.9583333333333334,
+        "macro_f1": 0.9521367521367522,
+        "per_label": {
+          "KHONG_CANH_BAO": {
+            "precision": 1.0,
+            "recall": 0.875,
+            "f1-score": 0.9333333333333333,
+            "support": 16.0
+          },
+          "CAN_XAC_MINH": {
+            "precision": 0.8571428571428571,
+            "recall": 1.0,
+            "f1-score": 0.9230769230769231,
+            "support": 12.0
+          },
+          "CANH_BAO": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 14.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            14,
+            2,
+            0
+          ],
+          [
+            0,
+            12,
+            0
+          ],
+          [
+            0,
+            0,
+            14
+          ]
+        ],
+        "label_order": [
+          "KHONG_CANH_BAO",
+          "CAN_XAC_MINH",
+          "CANH_BAO"
+        ],
+        "matrix_rows": "true",
+        "matrix_columns": "predicted"
+      }
+    },
+    {
+      "name": "E2",
+      "checkpoint": "D:\\livestream-violation-detection\\models\\phobert_v03_experiments_20260915_145458_712323\\E2\\best",
+      "configuration": {
+        "experiment": "E2",
+        "seed": 42,
+        "loss": "weighted_ce",
+        "class_weights": {
+          "KHONG_CANH_BAO": 0.9364386953548554,
+          "CAN_XAC_MINH": 1.0958994529008734,
+          "CANH_BAO": 0.9676618517442711
+        },
+        "class_weight_source": "train.csv only",
+        "class_weight_formula": "inverse sqrt(count), normalized to mean 1",
+        "train_label_counts": {
+          "CANH_BAO": 59,
+          "CAN_XAC_MINH": 46,
+          "KHONG_CANH_BAO": 63
+        },
+        "learning_rate": 2e-05,
+        "batch_size": 1,
+        "gradient_accumulation": 8,
+        "effective_batch_size": 8,
+        "max_epochs": 5,
+        "early_stopping_patience": null,
+        "max_length": 128,
+        "model": "vinai/phobert-base",
+        "base_revision": "01daacda68afe13d83023d16ec647239e344a1e6",
+        "initialized_from_finetuned_checkpoint": false,
+        "optimizer": "AdamW",
+        "weight_decay": 0.01,
+        "gradient_clip_norm": 1.0,
+        "scheduler": null,
+        "gradient_checkpointing": true,
+        "mixed_precision": "fp16",
+        "tokenizer_use_fast": false,
+        "device": "cuda",
+        "deterministic_algorithms": "warn_only",
+        "validation_loss": "unweighted mean CE for comparable tie breaks; weighted loss also recorded",
+        "weighted_loss_reduction": "sum(weight[y]*CE)/sum(weight[y]) across each full accumulation group",
+        "selection": "highest macro-F1, then lowest unweighted validation loss",
+        "early_stopping": "strict macro-F1 improvement resets patience; equal F1 does not",
+        "versions": {
+          "torch": "2.13.0+cu126",
+          "transformers": "5.16.1",
+          "underthesea": "9.5.0",
+          "numpy": "2.4.6",
+          "scikit-learn": "1.9.0"
+        }
+      },
+      "best": {
+        "epoch": 5,
+        "train_loss": 0.2487961027464922,
+        "validation_loss": 0.2916158214211464,
+        "weighted_validation_loss": 0.28821260308844665,
+        "accuracy": 0.9523809523809523,
+        "macro_precision": 0.9523809523809524,
+        "macro_recall": 0.9583333333333334,
+        "macro_f1": 0.9521367521367522,
+        "per_label": {
+          "KHONG_CANH_BAO": {
+            "precision": 1.0,
+            "recall": 0.875,
+            "f1-score": 0.9333333333333333,
+            "support": 16.0
+          },
+          "CAN_XAC_MINH": {
+            "precision": 0.8571428571428571,
+            "recall": 1.0,
+            "f1-score": 0.9230769230769231,
+            "support": 12.0
+          },
+          "CANH_BAO": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 14.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            14,
+            2,
+            0
+          ],
+          [
+            0,
+            12,
+            0
+          ],
+          [
+            0,
+            0,
+            14
+          ]
+        ],
+        "label_order": [
+          "KHONG_CANH_BAO",
+          "CAN_XAC_MINH",
+          "CANH_BAO"
+        ],
+        "matrix_rows": "true",
+        "matrix_columns": "predicted"
+      }
+    },
+    {
+      "name": "E3",
+      "checkpoint": "D:\\livestream-violation-detection\\models\\phobert_v03_experiments_20260915_145458_712323\\E3\\best",
+      "configuration": {
+        "experiment": "E3",
+        "seed": 42,
+        "loss": "ce",
+        "class_weights": {
+          "KHONG_CANH_BAO": 1.0,
+          "CAN_XAC_MINH": 1.0,
+          "CANH_BAO": 1.0
+        },
+        "class_weight_source": "train.csv only",
+        "class_weight_formula": "inverse sqrt(count), normalized to mean 1",
+        "train_label_counts": {
+          "CANH_BAO": 59,
+          "CAN_XAC_MINH": 46,
+          "KHONG_CANH_BAO": 63
+        },
+        "learning_rate": 1e-05,
+        "batch_size": 1,
+        "gradient_accumulation": 8,
+        "effective_batch_size": 8,
+        "max_epochs": 8,
+        "early_stopping_patience": 2,
+        "max_length": 128,
+        "model": "vinai/phobert-base",
+        "base_revision": "01daacda68afe13d83023d16ec647239e344a1e6",
+        "initialized_from_finetuned_checkpoint": false,
+        "optimizer": "AdamW",
+        "weight_decay": 0.01,
+        "gradient_clip_norm": 1.0,
+        "scheduler": null,
+        "gradient_checkpointing": true,
+        "mixed_precision": "fp16",
+        "tokenizer_use_fast": false,
+        "device": "cuda",
+        "deterministic_algorithms": "warn_only",
+        "validation_loss": "unweighted mean CE for comparable tie breaks; weighted loss also recorded",
+        "weighted_loss_reduction": "sum(weight[y]*CE)/sum(weight[y]) across each full accumulation group",
+        "selection": "highest macro-F1, then lowest unweighted validation loss",
+        "early_stopping": "strict macro-F1 improvement resets patience; equal F1 does not",
+        "versions": {
+          "torch": "2.13.0+cu126",
+          "transformers": "5.16.1",
+          "underthesea": "9.5.0",
+          "numpy": "2.4.6",
+          "scikit-learn": "1.9.0"
+        }
+      },
+      "best": {
+        "epoch": 5,
+        "train_loss": 0.66793080011294,
+        "validation_loss": 0.5871661731175014,
+        "weighted_validation_loss": 0.5871661731175014,
+        "accuracy": 0.9047619047619048,
+        "macro_precision": 0.9027777777777778,
+        "macro_recall": 0.9027777777777778,
+        "macro_f1": 0.9027777777777778,
+        "per_label": {
+          "KHONG_CANH_BAO": {
+            "precision": 0.875,
+            "recall": 0.875,
+            "f1-score": 0.875,
+            "support": 16.0
+          },
+          "CAN_XAC_MINH": {
+            "precision": 0.8333333333333334,
+            "recall": 0.8333333333333334,
+            "f1-score": 0.8333333333333334,
+            "support": 12.0
+          },
+          "CANH_BAO": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 14.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            14,
+            2,
+            0
+          ],
+          [
+            2,
+            10,
+            0
+          ],
+          [
+            0,
+            0,
+            14
+          ]
+        ],
+        "label_order": [
+          "KHONG_CANH_BAO",
+          "CAN_XAC_MINH",
+          "CANH_BAO"
+        ],
+        "matrix_rows": "true",
+        "matrix_columns": "predicted"
+      }
+    },
+    {
+      "name": "E1_seed123",
+      "checkpoint": "D:\\livestream-violation-detection\\models\\phobert_v03_experiments_20260915_145458_712323\\E1_seed123\\best",
+      "configuration": {
+        "experiment": "E1_seed123",
+        "seed": 123,
+        "loss": "ce",
+        "class_weights": {
+          "KHONG_CANH_BAO": 1.0,
+          "CAN_XAC_MINH": 1.0,
+          "CANH_BAO": 1.0
+        },
+        "class_weight_source": "train.csv only",
+        "class_weight_formula": "inverse sqrt(count), normalized to mean 1",
+        "train_label_counts": {
+          "CANH_BAO": 59,
+          "CAN_XAC_MINH": 46,
+          "KHONG_CANH_BAO": 63
+        },
+        "learning_rate": 2e-05,
+        "batch_size": 1,
+        "gradient_accumulation": 8,
+        "effective_batch_size": 8,
+        "max_epochs": 5,
+        "early_stopping_patience": null,
+        "max_length": 128,
+        "model": "vinai/phobert-base",
+        "base_revision": "01daacda68afe13d83023d16ec647239e344a1e6",
+        "initialized_from_finetuned_checkpoint": false,
+        "optimizer": "AdamW",
+        "weight_decay": 0.01,
+        "gradient_clip_norm": 1.0,
+        "scheduler": null,
+        "gradient_checkpointing": true,
+        "mixed_precision": "fp16",
+        "tokenizer_use_fast": false,
+        "device": "cuda",
+        "deterministic_algorithms": "warn_only",
+        "validation_loss": "unweighted mean CE for comparable tie breaks; weighted loss also recorded",
+        "weighted_loss_reduction": "sum(weight[y]*CE)/sum(weight[y]) across each full accumulation group",
+        "selection": "highest macro-F1, then lowest unweighted validation loss",
+        "early_stopping": "strict macro-F1 improvement resets patience; equal F1 does not",
+        "versions": {
+          "torch": "2.13.0+cu126",
+          "transformers": "5.16.1",
+          "underthesea": "9.5.0",
+          "numpy": "2.4.6",
+          "scikit-learn": "1.9.0"
+        }
+      },
+      "best": {
+        "epoch": 3,
+        "train_loss": 0.6569744905545598,
+        "validation_loss": 0.5068165237704912,
+        "weighted_validation_loss": 0.5068165237704912,
+        "accuracy": 0.8809523809523809,
+        "macro_precision": 0.8770451770451771,
+        "macro_recall": 0.878968253968254,
+        "macro_f1": 0.8772657450076805,
+        "per_label": {
+          "KHONG_CANH_BAO": {
+            "precision": 0.9333333333333333,
+            "recall": 0.875,
+            "f1-score": 0.9032258064516129,
+            "support": 16.0
+          },
+          "CAN_XAC_MINH": {
+            "precision": 0.7692307692307693,
+            "recall": 0.8333333333333334,
+            "f1-score": 0.8,
+            "support": 12.0
+          },
+          "CANH_BAO": {
+            "precision": 0.9285714285714286,
+            "recall": 0.9285714285714286,
+            "f1-score": 0.9285714285714286,
+            "support": 14.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            14,
+            2,
+            0
+          ],
+          [
+            1,
+            10,
+            1
+          ],
+          [
+            0,
+            1,
+            13
+          ]
+        ],
+        "label_order": [
+          "KHONG_CANH_BAO",
+          "CAN_XAC_MINH",
+          "CANH_BAO"
+        ],
+        "matrix_rows": "true",
+        "matrix_columns": "predicted"
+      }
+    }
+  ],
+  "selection": {
+    "status": "FROZEN",
+    "frozen_at_utc": "2026-09-15T08:00:25.190373+00:00",
+    "checkpoint": "D:\\livestream-violation-detection\\models\\phobert_v03_20260915_145458_712323\\best",
+    "file_sha256": {
+      "added_tokens.json": "6887f87ac991379ea91aedb4dd5e1af4f6ee38693ec0ca1c2b6209559ce283d8",
+      "bpe.codes": "9dfe53fb8abbddd3387da99641c36e00bee757a3679aad9cf0a7cdc4b30f6ef8",
+      "config.json": "a812a4f5f09d84101bd97e7b93cd44bf85c5a460d4b54581e70d680b6229c8bc",
+      "model.safetensors": "33bae82dacb784347ae5a57b2af071848f2a90277ad3c4aa86ed1cfb5b4c2c5d",
+      "preprocessing.json": "1ba139091612004371d98ce1bbbcc28fe95fc83825a07ff2fe79c181250fe6b9",
+      "tokenizer_config.json": "551c1e392c11bda377e643e1481e0e5b0bb42e3589dd36f998ff3bc897841974",
+      "training_config.json": "d09a0dbb2ae34547402a353a3b8e3055653d22eb8fde731d214ff540b0115a8e",
+      "validation_metrics.json": "8de2f940de64b6488039c38ef7f6eb018a79fc48f43e62799df9a11434103ae6",
+      "vocab.txt": "dffd7543c401fb6567253ae7c3313004532c33d062525250049c616544bad777"
+    },
+    "selected_experiment": "E1",
+    "selection_reason": "Validation macro-F1, tie lower CE loss.",
+    "benchmark_used_for_selection": false,
+    "stability_seed_policy": "Seed 123 is diagnostic only, not used to replace the seed-42 selection."
+  },
+  "e3_loss_choice": "ce",
+  "top_two_macro_f1_gap": 0.0,
+  "safety_macro_f1_negligible_definition": 0.02,
+  "stability_repeat_required": true,
+  "truncated_rows": {
+    "train": [],
+    "validation": []
+  },
+  "smoke_test": [
+    {
+      "id": "LS0003",
+      "true_label": "KHONG_CANH_BAO",
+      "label": "KHONG_CANH_BAO",
+      "confidence": 0.955250084400177,
+      "probabilities": {
+        "KHONG_CANH_BAO": 0.955250084400177,
+        "CAN_XAC_MINH": 0.0276811346411705,
+        "CANH_BAO": 0.017068814486265182
+      }
+    },
+    {
+      "id": "LS0002",
+      "true_label": "CAN_XAC_MINH",
+      "label": "CAN_XAC_MINH",
+      "confidence": 0.9262455701828003,
+      "probabilities": {
+        "KHONG_CANH_BAO": 0.035853371024131775,
+        "CAN_XAC_MINH": 0.9262455701828003,
+        "CANH_BAO": 0.03790105879306793
+      }
+    },
+    {
+      "id": "LS0001",
+      "true_label": "CANH_BAO",
+      "label": "CANH_BAO",
+      "confidence": 0.9520902037620544,
+      "probabilities": {
+        "KHONG_CANH_BAO": 0.013354931026697159,
+        "CAN_XAC_MINH": 0.03455482795834541,
+        "CANH_BAO": 0.9520902037620544
+      }
+    }
+  ],
+  "pipeline_checkpoint_replaced": false,
+  "comparison_started_at_utc": "2026-09-15T08:00:45.272957+00:00",
+  "comparison_finished_at_utc": "2026-09-15T08:00:55.732461+00:00",
+  "benchmarks": {
+    "validation_v03": {
+      "phobert": {
+        "v02": {
+          "accuracy": 0.8333333333333334,
+          "macro_precision": 0.8296296296296296,
+          "macro_recall": 0.8194444444444445,
+          "macro_f1": 0.818571106603561,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 0.7777777777777778,
+              "recall": 0.875,
+              "f1-score": 0.8235294117647058,
+              "support": 16.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.7777777777777778,
+              "recall": 0.5833333333333334,
+              "f1-score": 0.6666666666666666,
+              "support": 12.0
+            },
+            "CANH_BAO": {
+              "precision": 0.9333333333333333,
+              "recall": 1.0,
+              "f1-score": 0.9655172413793104,
+              "support": 14.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              14,
+              2,
+              0
+            ],
+            [
+              4,
+              7,
+              1
+            ],
+            [
+              0,
+              0,
+              14
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "v03": {
+          "accuracy": 0.9523809523809523,
+          "macro_precision": 0.9523809523809524,
+          "macro_recall": 0.9583333333333334,
+          "macro_f1": 0.9521367521367522,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 0.875,
+              "f1-score": 0.9333333333333333,
+              "support": 16.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.8571428571428571,
+              "recall": 1.0,
+              "f1-score": 0.9230769230769231,
+              "support": 12.0
+            },
+            "CANH_BAO": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1-score": 1.0,
+              "support": 14.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              14,
+              2,
+              0
+            ],
+            [
+              0,
+              12,
+              0
+            ],
+            [
+              0,
+              0,
+              14
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "fixed_ids": [
+          "LS0065",
+          "CV03_002",
+          "CV03_011",
+          "CV03_023",
+          "CV03_026"
+        ],
+        "new_error_ids": [],
+        "paired_counts": [
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 0,
+            "count": 14
+          },
+          {
+            "truth": 0,
+            "v02": 1,
+            "v03": 1,
+            "count": 2
+          },
+          {
+            "truth": 1,
+            "v02": 0,
+            "v03": 1,
+            "count": 4
+          },
+          {
+            "truth": 1,
+            "v02": 1,
+            "v03": 1,
+            "count": 7
+          },
+          {
+            "truth": 1,
+            "v02": 2,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 2,
+            "v02": 2,
+            "v03": 2,
+            "count": 14
+          }
+        ]
+      },
+      "hybrid": {
+        "v02": {
+          "accuracy": 0.8571428571428571,
+          "macro_precision": 0.85,
+          "macro_recall": 0.8541666666666666,
+          "macro_f1": 0.8514089729328885,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 0.8666666666666667,
+              "recall": 0.8125,
+              "f1-score": 0.8387096774193549,
+              "support": 16.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.75,
+              "recall": 0.75,
+              "f1-score": 0.75,
+              "support": 12.0
+            },
+            "CANH_BAO": {
+              "precision": 0.9333333333333333,
+              "recall": 1.0,
+              "f1-score": 0.9655172413793104,
+              "support": 14.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              13,
+              3,
+              0
+            ],
+            [
+              2,
+              9,
+              1
+            ],
+            [
+              0,
+              0,
+              14
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "v03": {
+          "accuracy": 0.9285714285714286,
+          "macro_precision": 0.9333333333333332,
+          "macro_recall": 0.9375,
+          "macro_f1": 0.9284802043422733,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 0.8125,
+              "f1-score": 0.896551724137931,
+              "support": 16.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.8,
+              "recall": 1.0,
+              "f1-score": 0.8888888888888888,
+              "support": 12.0
+            },
+            "CANH_BAO": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1-score": 1.0,
+              "support": 14.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              13,
+              3,
+              0
+            ],
+            [
+              0,
+              12,
+              0
+            ],
+            [
+              0,
+              0,
+              14
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "fixed_ids": [
+          "LS0065",
+          "CV03_001",
+          "CV03_023",
+          "CV03_026"
+        ],
+        "new_error_ids": [
+          "LS0090"
+        ],
+        "paired_counts": [
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 0,
+            "count": 12
+          },
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 0,
+            "v02": 1,
+            "v03": 0,
+            "count": 1
+          },
+          {
+            "truth": 0,
+            "v02": 1,
+            "v03": 1,
+            "count": 2
+          },
+          {
+            "truth": 1,
+            "v02": 0,
+            "v03": 1,
+            "count": 2
+          },
+          {
+            "truth": 1,
+            "v02": 1,
+            "v03": 1,
+            "count": 9
+          },
+          {
+            "truth": 1,
+            "v02": 2,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 2,
+            "v02": 2,
+            "v03": 2,
+            "count": 14
+          }
+        ]
+      }
+    },
+    "validation_v02": {
+      "phobert": {
+        "v02": {
+          "accuracy": 0.9,
+          "macro_precision": 0.8956228956228957,
+          "macro_recall": 0.9027777777777778,
+          "macro_f1": 0.8950004244121891,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 0.8333333333333334,
+              "f1-score": 0.9090909090909091,
+              "support": 12.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.7777777777777778,
+              "recall": 0.875,
+              "f1-score": 0.8235294117647058,
+              "support": 8.0
+            },
+            "CANH_BAO": {
+              "precision": 0.9090909090909091,
+              "recall": 1.0,
+              "f1-score": 0.9523809523809523,
+              "support": 10.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              10,
+              2,
+              0
+            ],
+            [
+              0,
+              7,
+              1
+            ],
+            [
+              0,
+              0,
+              10
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "v03": {
+          "accuracy": 0.9333333333333333,
+          "macro_precision": 0.9333333333333332,
+          "macro_recall": 0.9444444444444445,
+          "macro_f1": 0.9326599326599326,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 0.8333333333333334,
+              "f1-score": 0.9090909090909091,
+              "support": 12.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.8,
+              "recall": 1.0,
+              "f1-score": 0.8888888888888888,
+              "support": 8.0
+            },
+            "CANH_BAO": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1-score": 1.0,
+              "support": 10.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              10,
+              2,
+              0
+            ],
+            [
+              0,
+              8,
+              0
+            ],
+            [
+              0,
+              0,
+              10
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "fixed_ids": [
+          "LS0065"
+        ],
+        "new_error_ids": [],
+        "paired_counts": [
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 0,
+            "count": 10
+          },
+          {
+            "truth": 0,
+            "v02": 1,
+            "v03": 1,
+            "count": 2
+          },
+          {
+            "truth": 1,
+            "v02": 1,
+            "v03": 1,
+            "count": 7
+          },
+          {
+            "truth": 1,
+            "v02": 2,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 2,
+            "v02": 2,
+            "v03": 2,
+            "count": 10
+          }
+        ]
+      },
+      "hybrid": {
+        "v02": {
+          "accuracy": 0.9,
+          "macro_precision": 0.8956228956228957,
+          "macro_recall": 0.9027777777777778,
+          "macro_f1": 0.8950004244121891,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 0.8333333333333334,
+              "f1-score": 0.9090909090909091,
+              "support": 12.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.7777777777777778,
+              "recall": 0.875,
+              "f1-score": 0.8235294117647058,
+              "support": 8.0
+            },
+            "CANH_BAO": {
+              "precision": 0.9090909090909091,
+              "recall": 1.0,
+              "f1-score": 0.9523809523809523,
+              "support": 10.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              10,
+              2,
+              0
+            ],
+            [
+              0,
+              7,
+              1
+            ],
+            [
+              0,
+              0,
+              10
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "v03": {
+          "accuracy": 0.9,
+          "macro_precision": 0.9090909090909092,
+          "macro_recall": 0.9166666666666666,
+          "macro_f1": 0.899749373433584,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 0.75,
+              "f1-score": 0.8571428571428571,
+              "support": 12.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.7272727272727273,
+              "recall": 1.0,
+              "f1-score": 0.8421052631578947,
+              "support": 8.0
+            },
+            "CANH_BAO": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1-score": 1.0,
+              "support": 10.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              9,
+              3,
+              0
+            ],
+            [
+              0,
+              8,
+              0
+            ],
+            [
+              0,
+              0,
+              10
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "fixed_ids": [
+          "LS0065"
+        ],
+        "new_error_ids": [
+          "LS0090"
+        ],
+        "paired_counts": [
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 0,
+            "count": 9
+          },
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 0,
+            "v02": 1,
+            "v03": 1,
+            "count": 2
+          },
+          {
+            "truth": 1,
+            "v02": 1,
+            "v03": 1,
+            "count": 7
+          },
+          {
+            "truth": 1,
+            "v02": 2,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 2,
+            "v02": 2,
+            "v03": 2,
+            "count": 10
+          }
+        ]
+      }
+    },
+    "development_regression_v03": {
+      "phobert": {
+        "v02": {
+          "accuracy": 0.6333333333333333,
+          "macro_precision": 0.5974358974358974,
+          "macro_recall": 0.6333333333333333,
+          "macro_f1": 0.5564251207729468,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 0.6,
+              "recall": 0.9,
+              "f1-score": 0.72,
+              "support": 10.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.5,
+              "recall": 0.1,
+              "f1-score": 0.16666666666666666,
+              "support": 10.0
+            },
+            "CANH_BAO": {
+              "precision": 0.6923076923076923,
+              "recall": 0.9,
+              "f1-score": 0.782608695652174,
+              "support": 10.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              9,
+              1,
+              0
+            ],
+            [
+              5,
+              1,
+              4
+            ],
+            [
+              1,
+              0,
+              9
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "v03": {
+          "accuracy": 0.8,
+          "macro_precision": 0.7954545454545454,
+          "macro_recall": 0.7999999999999999,
+          "macro_f1": 0.7936507936507935,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 0.7272727272727273,
+              "recall": 0.8,
+              "f1-score": 0.7619047619047619,
+              "support": 10.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.75,
+              "recall": 0.6,
+              "f1-score": 0.6666666666666666,
+              "support": 10.0
+            },
+            "CANH_BAO": {
+              "precision": 0.9090909090909091,
+              "recall": 1.0,
+              "f1-score": 0.9523809523809523,
+              "support": 10.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              8,
+              2,
+              0
+            ],
+            [
+              3,
+              6,
+              1
+            ],
+            [
+              0,
+              0,
+              10
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "fixed_ids": [
+          "FTV03_013",
+          "FTV03_015",
+          "FTV03_016",
+          "FTV03_018",
+          "FTV03_019",
+          "FTV03_028"
+        ],
+        "new_error_ids": [
+          "FTV03_005"
+        ],
+        "paired_counts": [
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 0,
+            "count": 8
+          },
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 0,
+            "v02": 1,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 1,
+            "v02": 0,
+            "v03": 0,
+            "count": 2
+          },
+          {
+            "truth": 1,
+            "v02": 0,
+            "v03": 1,
+            "count": 3
+          },
+          {
+            "truth": 1,
+            "v02": 1,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 1,
+            "v02": 2,
+            "v03": 0,
+            "count": 1
+          },
+          {
+            "truth": 1,
+            "v02": 2,
+            "v03": 1,
+            "count": 2
+          },
+          {
+            "truth": 1,
+            "v02": 2,
+            "v03": 2,
+            "count": 1
+          },
+          {
+            "truth": 2,
+            "v02": 0,
+            "v03": 2,
+            "count": 1
+          },
+          {
+            "truth": 2,
+            "v02": 2,
+            "v03": 2,
+            "count": 9
+          }
+        ]
+      },
+      "hybrid": {
+        "v02": {
+          "accuracy": 0.8,
+          "macro_precision": 0.7954545454545455,
+          "macro_recall": 0.7999999999999999,
+          "macro_f1": 0.7936507936507936,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 0.8181818181818182,
+              "recall": 0.9,
+              "f1-score": 0.8571428571428571,
+              "support": 10.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.75,
+              "recall": 0.6,
+              "f1-score": 0.6666666666666666,
+              "support": 10.0
+            },
+            "CANH_BAO": {
+              "precision": 0.8181818181818182,
+              "recall": 0.9,
+              "f1-score": 0.8571428571428571,
+              "support": 10.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              9,
+              1,
+              0
+            ],
+            [
+              2,
+              6,
+              2
+            ],
+            [
+              0,
+              1,
+              9
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "v03": {
+          "accuracy": 0.8333333333333334,
+          "macro_precision": 0.8498168498168498,
+          "macro_recall": 0.8333333333333334,
+          "macro_f1": 0.8294970161977835,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 0.8571428571428571,
+              "recall": 0.6,
+              "f1-score": 0.7058823529411765,
+              "support": 10.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.6923076923076923,
+              "recall": 0.9,
+              "f1-score": 0.782608695652174,
+              "support": 10.0
+            },
+            "CANH_BAO": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1-score": 1.0,
+              "support": 10.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              6,
+              4,
+              0
+            ],
+            [
+              1,
+              9,
+              0
+            ],
+            [
+              0,
+              0,
+              10
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "fixed_ids": [
+          "FTV03_011",
+          "FTV03_015",
+          "FTV03_017",
+          "FTV03_018",
+          "FTV03_028"
+        ],
+        "new_error_ids": [
+          "FTV03_001",
+          "FTV03_004",
+          "FTV03_005",
+          "FTV03_014"
+        ],
+        "paired_counts": [
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 0,
+            "count": 6
+          },
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 1,
+            "count": 3
+          },
+          {
+            "truth": 0,
+            "v02": 1,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 1,
+            "v02": 0,
+            "v03": 1,
+            "count": 2
+          },
+          {
+            "truth": 1,
+            "v02": 1,
+            "v03": 0,
+            "count": 1
+          },
+          {
+            "truth": 1,
+            "v02": 1,
+            "v03": 1,
+            "count": 5
+          },
+          {
+            "truth": 1,
+            "v02": 2,
+            "v03": 1,
+            "count": 2
+          },
+          {
+            "truth": 2,
+            "v02": 1,
+            "v03": 2,
+            "count": 1
+          },
+          {
+            "truth": 2,
+            "v02": 2,
+            "v03": 2,
+            "count": 9
+          }
+        ]
+      }
+    },
+    "audio_clean": {
+      "phobert": {
+        "v02": {
+          "accuracy": 0.7777777777777778,
+          "macro_precision": 0.5333333333333333,
+          "macro_recall": 0.6666666666666666,
+          "macro_f1": 0.5833333333333334,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1-score": 1.0,
+              "support": 4.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1-score": 0.0,
+              "support": 2.0
+            },
+            "CANH_BAO": {
+              "precision": 0.6,
+              "recall": 1.0,
+              "f1-score": 0.75,
+              "support": 3.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              4,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              3
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "v03": {
+          "accuracy": 0.6666666666666666,
+          "macro_precision": 0.5333333333333333,
+          "macro_recall": 0.5833333333333334,
+          "macro_f1": 0.5357142857142857,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 0.75,
+              "f1-score": 0.8571428571428571,
+              "support": 4.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1-score": 0.0,
+              "support": 2.0
+            },
+            "CANH_BAO": {
+              "precision": 0.6,
+              "recall": 1.0,
+              "f1-score": 0.75,
+              "support": 3.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              3,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              3
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "fixed_ids": [],
+        "new_error_ids": [
+          "AT008"
+        ],
+        "paired_counts": [
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 0,
+            "count": 3
+          },
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 1,
+            "v02": 2,
+            "v03": 2,
+            "count": 2
+          },
+          {
+            "truth": 2,
+            "v02": 2,
+            "v03": 2,
+            "count": 3
+          }
+        ]
+      },
+      "hybrid": {
+        "v02": {
+          "accuracy": 0.6666666666666666,
+          "macro_precision": 0.5333333333333333,
+          "macro_recall": 0.5833333333333334,
+          "macro_f1": 0.5357142857142857,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 0.75,
+              "f1-score": 0.8571428571428571,
+              "support": 4.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1-score": 0.0,
+              "support": 2.0
+            },
+            "CANH_BAO": {
+              "precision": 0.6,
+              "recall": 1.0,
+              "f1-score": 0.75,
+              "support": 3.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              3,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              3
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "v03": {
+          "accuracy": 0.6666666666666666,
+          "macro_precision": 0.5333333333333333,
+          "macro_recall": 0.5833333333333334,
+          "macro_f1": 0.5357142857142857,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 0.75,
+              "f1-score": 0.8571428571428571,
+              "support": 4.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1-score": 0.0,
+              "support": 2.0
+            },
+            "CANH_BAO": {
+              "precision": 0.6,
+              "recall": 1.0,
+              "f1-score": 0.75,
+              "support": 3.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              3,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              3
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "fixed_ids": [
+          "AT007"
+        ],
+        "new_error_ids": [
+          "AT008"
+        ],
+        "paired_counts": [
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 0,
+            "count": 2
+          },
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 0,
+            "v02": 1,
+            "v03": 0,
+            "count": 1
+          },
+          {
+            "truth": 1,
+            "v02": 2,
+            "v03": 2,
+            "count": 2
+          },
+          {
+            "truth": 2,
+            "v02": 2,
+            "v03": 2,
+            "count": 3
+          }
+        ]
+      }
+    },
+    "audio_reconstructed_9": {
+      "phobert": {
+        "v02": {
+          "accuracy": 0.7777777777777778,
+          "macro_precision": 0.5333333333333333,
+          "macro_recall": 0.6666666666666666,
+          "macro_f1": 0.5833333333333334,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1-score": 1.0,
+              "support": 4.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1-score": 0.0,
+              "support": 2.0
+            },
+            "CANH_BAO": {
+              "precision": 0.6,
+              "recall": 1.0,
+              "f1-score": 0.75,
+              "support": 3.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              4,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              3
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "v03": {
+          "accuracy": 0.8888888888888888,
+          "macro_precision": 0.9166666666666666,
+          "macro_recall": 0.8333333333333334,
+          "macro_f1": 0.8412698412698413,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1-score": 1.0,
+              "support": 4.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 1.0,
+              "recall": 0.5,
+              "f1-score": 0.6666666666666666,
+              "support": 2.0
+            },
+            "CANH_BAO": {
+              "precision": 0.75,
+              "recall": 1.0,
+              "f1-score": 0.8571428571428571,
+              "support": 3.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              4,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              3
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "fixed_ids": [
+          "AT005"
+        ],
+        "new_error_ids": [],
+        "paired_counts": [
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 0,
+            "count": 4
+          },
+          {
+            "truth": 1,
+            "v02": 2,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 1,
+            "v02": 2,
+            "v03": 2,
+            "count": 1
+          },
+          {
+            "truth": 2,
+            "v02": 2,
+            "v03": 2,
+            "count": 3
+          }
+        ]
+      },
+      "hybrid": {
+        "v02": {
+          "accuracy": 0.7777777777777778,
+          "macro_precision": 0.75,
+          "macro_recall": 0.75,
+          "macro_f1": 0.7380952380952381,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 0.75,
+              "f1-score": 0.8571428571428571,
+              "support": 4.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.5,
+              "recall": 0.5,
+              "f1-score": 0.5,
+              "support": 2.0
+            },
+            "CANH_BAO": {
+              "precision": 0.75,
+              "recall": 1.0,
+              "f1-score": 0.8571428571428571,
+              "support": 3.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              3,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              3
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "v03": {
+          "accuracy": 0.7777777777777778,
+          "macro_precision": 0.75,
+          "macro_recall": 0.75,
+          "macro_f1": 0.7380952380952381,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 0.75,
+              "f1-score": 0.8571428571428571,
+              "support": 4.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.5,
+              "recall": 0.5,
+              "f1-score": 0.5,
+              "support": 2.0
+            },
+            "CANH_BAO": {
+              "precision": 0.75,
+              "recall": 1.0,
+              "f1-score": 0.8571428571428571,
+              "support": 3.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              3,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              3
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "fixed_ids": [
+          "AT001"
+        ],
+        "new_error_ids": [
+          "AT008"
+        ],
+        "paired_counts": [
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 0,
+            "count": 2
+          },
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 0,
+            "v02": 1,
+            "v03": 0,
+            "count": 1
+          },
+          {
+            "truth": 1,
+            "v02": 1,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 1,
+            "v02": 2,
+            "v03": 2,
+            "count": 1
+          },
+          {
+            "truth": 2,
+            "v02": 2,
+            "v03": 2,
+            "count": 3
+          }
+        ]
+      }
+    },
+    "audio_classification_units": {
+      "phobert": {
+        "v02": {
+          "accuracy": 0.8,
+          "macro_precision": 0.8666666666666667,
+          "macro_recall": 0.7777777777777777,
+          "macro_f1": 0.75,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1-score": 1.0,
+              "support": 4.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 1.0,
+              "recall": 0.3333333333333333,
+              "f1-score": 0.5,
+              "support": 3.0
+            },
+            "CANH_BAO": {
+              "precision": 0.6,
+              "recall": 1.0,
+              "f1-score": 0.75,
+              "support": 3.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              4,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              0,
+              3
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "v03": {
+          "accuracy": 0.9,
+          "macro_precision": 0.9166666666666666,
+          "macro_recall": 0.8888888888888888,
+          "macro_f1": 0.8857142857142857,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1-score": 1.0,
+              "support": 4.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 1.0,
+              "recall": 0.6666666666666666,
+              "f1-score": 0.8,
+              "support": 3.0
+            },
+            "CANH_BAO": {
+              "precision": 0.75,
+              "recall": 1.0,
+              "f1-score": 0.8571428571428571,
+              "support": 3.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              4,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              1
+            ],
+            [
+              0,
+              0,
+              3
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "fixed_ids": [
+          "U0005"
+        ],
+        "new_error_ids": [],
+        "paired_counts": [
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 0,
+            "count": 4
+          },
+          {
+            "truth": 1,
+            "v02": 1,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 1,
+            "v02": 2,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 1,
+            "v02": 2,
+            "v03": 2,
+            "count": 1
+          },
+          {
+            "truth": 2,
+            "v02": 2,
+            "v03": 2,
+            "count": 3
+          }
+        ]
+      },
+      "hybrid": {
+        "v02": {
+          "accuracy": 0.7,
+          "macro_precision": 0.7000000000000001,
+          "macro_recall": 0.6944444444444443,
+          "macro_f1": 0.669047619047619,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 0.75,
+              "f1-score": 0.8571428571428571,
+              "support": 4.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.5,
+              "recall": 0.3333333333333333,
+              "f1-score": 0.4,
+              "support": 3.0
+            },
+            "CANH_BAO": {
+              "precision": 0.6,
+              "recall": 1.0,
+              "f1-score": 0.75,
+              "support": 3.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              3,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              0,
+              3
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "v03": {
+          "accuracy": 0.8,
+          "macro_precision": 0.8055555555555555,
+          "macro_recall": 0.8055555555555555,
+          "macro_f1": 0.7936507936507936,
+          "per_label": {
+            "KHONG_CANH_BAO": {
+              "precision": 1.0,
+              "recall": 0.75,
+              "f1-score": 0.8571428571428571,
+              "support": 4.0
+            },
+            "CAN_XAC_MINH": {
+              "precision": 0.6666666666666666,
+              "recall": 0.6666666666666666,
+              "f1-score": 0.6666666666666666,
+              "support": 3.0
+            },
+            "CANH_BAO": {
+              "precision": 0.75,
+              "recall": 1.0,
+              "f1-score": 0.8571428571428571,
+              "support": 3.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              3,
+              1,
+              0
+            ],
+            [
+              0,
+              2,
+              1
+            ],
+            [
+              0,
+              0,
+              3
+            ]
+          ],
+          "label_order": [
+            "KHONG_CANH_BAO",
+            "CAN_XAC_MINH",
+            "CANH_BAO"
+          ],
+          "matrix_rows": "true",
+          "matrix_columns": "predicted"
+        },
+        "fixed_ids": [
+          "U0001",
+          "U0005"
+        ],
+        "new_error_ids": [
+          "U0009"
+        ],
+        "paired_counts": [
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 0,
+            "count": 2
+          },
+          {
+            "truth": 0,
+            "v02": 0,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 0,
+            "v02": 1,
+            "v03": 0,
+            "count": 1
+          },
+          {
+            "truth": 1,
+            "v02": 1,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 1,
+            "v02": 2,
+            "v03": 1,
+            "count": 1
+          },
+          {
+            "truth": 1,
+            "v02": 2,
+            "v03": 2,
+            "count": 1
+          },
+          {
+            "truth": 2,
+            "v02": 2,
+            "v03": 2,
+            "count": 3
+          }
+        ]
+      }
+    }
+  },
+  "audio_provenance": {
+    "saved_audio_result": "D:\\livestream-violation-detection\\reports\\audio_demo_20260915_044703_489731\\result.json",
+    "saved_alignment": "D:\\livestream-violation-detection\\reports\\audio_pipeline_eval_20260915_044803_748469\\report.json",
+    "audio_file": "D:\\livestream-violation-detection\\audio\\audio_test_9_sentences.m4a",
+    "whisper_calls": 0,
+    "expected_sentences": 9,
+    "classification_units": 10,
+    "notes": "Unit labels inherit parent sentence truth. AT005 second unit is context-dependent; reconstructed 9-sentence score is diagnostic, not production pipeline score."
+  },
+  "audio_diagnostics": [
+    {
+      "id": "AT001",
+      "true_label": "KHONG_CANH_BAO",
+      "unit_ids": [
+        "U0001"
+      ],
+      "v02": {
+        "phobert": {
+          "clean_label": "KHONG_CANH_BAO",
+          "reconstructed_asr_label": "KHONG_CANH_BAO",
+          "unit_labels": [
+            "KHONG_CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "KHONG_CANH_BAO",
+          "reconstructed_asr_label": "CAN_XAC_MINH",
+          "unit_labels": [
+            "CAN_XAC_MINH"
+          ],
+          "all_units_correct": false,
+          "clean_classification_error": false,
+          "error_appears_after_asr": true,
+          "split_context_error": false
+        }
+      },
+      "v03": {
+        "phobert": {
+          "clean_label": "KHONG_CANH_BAO",
+          "reconstructed_asr_label": "KHONG_CANH_BAO",
+          "unit_labels": [
+            "KHONG_CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "KHONG_CANH_BAO",
+          "reconstructed_asr_label": "KHONG_CANH_BAO",
+          "unit_labels": [
+            "KHONG_CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        }
+      }
+    },
+    {
+      "id": "AT002",
+      "true_label": "CAN_XAC_MINH",
+      "unit_ids": [
+        "U0002"
+      ],
+      "v02": {
+        "phobert": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CANH_BAO",
+          "unit_labels": [
+            "CANH_BAO"
+          ],
+          "all_units_correct": false,
+          "clean_classification_error": true,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CANH_BAO",
+          "unit_labels": [
+            "CANH_BAO"
+          ],
+          "all_units_correct": false,
+          "clean_classification_error": true,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        }
+      },
+      "v03": {
+        "phobert": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CANH_BAO",
+          "unit_labels": [
+            "CANH_BAO"
+          ],
+          "all_units_correct": false,
+          "clean_classification_error": true,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CANH_BAO",
+          "unit_labels": [
+            "CANH_BAO"
+          ],
+          "all_units_correct": false,
+          "clean_classification_error": true,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        }
+      }
+    },
+    {
+      "id": "AT003",
+      "true_label": "CANH_BAO",
+      "unit_ids": [
+        "U0003"
+      ],
+      "v02": {
+        "phobert": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CANH_BAO",
+          "unit_labels": [
+            "CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CANH_BAO",
+          "unit_labels": [
+            "CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        }
+      },
+      "v03": {
+        "phobert": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CANH_BAO",
+          "unit_labels": [
+            "CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CANH_BAO",
+          "unit_labels": [
+            "CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        }
+      }
+    },
+    {
+      "id": "AT004",
+      "true_label": "KHONG_CANH_BAO",
+      "unit_ids": [
+        "U0004"
+      ],
+      "v02": {
+        "phobert": {
+          "clean_label": "KHONG_CANH_BAO",
+          "reconstructed_asr_label": "KHONG_CANH_BAO",
+          "unit_labels": [
+            "KHONG_CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "KHONG_CANH_BAO",
+          "reconstructed_asr_label": "KHONG_CANH_BAO",
+          "unit_labels": [
+            "KHONG_CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        }
+      },
+      "v03": {
+        "phobert": {
+          "clean_label": "KHONG_CANH_BAO",
+          "reconstructed_asr_label": "KHONG_CANH_BAO",
+          "unit_labels": [
+            "KHONG_CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "KHONG_CANH_BAO",
+          "reconstructed_asr_label": "KHONG_CANH_BAO",
+          "unit_labels": [
+            "KHONG_CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        }
+      }
+    },
+    {
+      "id": "AT005",
+      "true_label": "CAN_XAC_MINH",
+      "unit_ids": [
+        "U0005",
+        "U0006"
+      ],
+      "v02": {
+        "phobert": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CANH_BAO",
+          "unit_labels": [
+            "CANH_BAO",
+            "CAN_XAC_MINH"
+          ],
+          "all_units_correct": false,
+          "clean_classification_error": true,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CAN_XAC_MINH",
+          "unit_labels": [
+            "CANH_BAO",
+            "CAN_XAC_MINH"
+          ],
+          "all_units_correct": false,
+          "clean_classification_error": true,
+          "error_appears_after_asr": false,
+          "split_context_error": true
+        }
+      },
+      "v03": {
+        "phobert": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CAN_XAC_MINH",
+          "unit_labels": [
+            "CAN_XAC_MINH",
+            "CAN_XAC_MINH"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": true,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CAN_XAC_MINH",
+          "unit_labels": [
+            "CAN_XAC_MINH",
+            "CAN_XAC_MINH"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": true,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        }
+      }
+    },
+    {
+      "id": "AT006",
+      "true_label": "CANH_BAO",
+      "unit_ids": [
+        "U0007"
+      ],
+      "v02": {
+        "phobert": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CANH_BAO",
+          "unit_labels": [
+            "CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CANH_BAO",
+          "unit_labels": [
+            "CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        }
+      },
+      "v03": {
+        "phobert": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CANH_BAO",
+          "unit_labels": [
+            "CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CANH_BAO",
+          "unit_labels": [
+            "CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        }
+      }
+    },
+    {
+      "id": "AT007",
+      "true_label": "KHONG_CANH_BAO",
+      "unit_ids": [
+        "U0008"
+      ],
+      "v02": {
+        "phobert": {
+          "clean_label": "KHONG_CANH_BAO",
+          "reconstructed_asr_label": "KHONG_CANH_BAO",
+          "unit_labels": [
+            "KHONG_CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "CAN_XAC_MINH",
+          "reconstructed_asr_label": "KHONG_CANH_BAO",
+          "unit_labels": [
+            "KHONG_CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": true,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        }
+      },
+      "v03": {
+        "phobert": {
+          "clean_label": "KHONG_CANH_BAO",
+          "reconstructed_asr_label": "KHONG_CANH_BAO",
+          "unit_labels": [
+            "KHONG_CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "KHONG_CANH_BAO",
+          "reconstructed_asr_label": "KHONG_CANH_BAO",
+          "unit_labels": [
+            "KHONG_CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        }
+      }
+    },
+    {
+      "id": "AT008",
+      "true_label": "KHONG_CANH_BAO",
+      "unit_ids": [
+        "U0009"
+      ],
+      "v02": {
+        "phobert": {
+          "clean_label": "KHONG_CANH_BAO",
+          "reconstructed_asr_label": "KHONG_CANH_BAO",
+          "unit_labels": [
+            "KHONG_CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "KHONG_CANH_BAO",
+          "reconstructed_asr_label": "KHONG_CANH_BAO",
+          "unit_labels": [
+            "KHONG_CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        }
+      },
+      "v03": {
+        "phobert": {
+          "clean_label": "CAN_XAC_MINH",
+          "reconstructed_asr_label": "KHONG_CANH_BAO",
+          "unit_labels": [
+            "KHONG_CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": true,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "CAN_XAC_MINH",
+          "reconstructed_asr_label": "CAN_XAC_MINH",
+          "unit_labels": [
+            "CAN_XAC_MINH"
+          ],
+          "all_units_correct": false,
+          "clean_classification_error": true,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        }
+      }
+    },
+    {
+      "id": "AT009",
+      "true_label": "CANH_BAO",
+      "unit_ids": [
+        "U0010"
+      ],
+      "v02": {
+        "phobert": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CANH_BAO",
+          "unit_labels": [
+            "CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CANH_BAO",
+          "unit_labels": [
+            "CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        }
+      },
+      "v03": {
+        "phobert": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CANH_BAO",
+          "unit_labels": [
+            "CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        },
+        "hybrid": {
+          "clean_label": "CANH_BAO",
+          "reconstructed_asr_label": "CANH_BAO",
+          "unit_labels": [
+            "CANH_BAO"
+          ],
+          "all_units_correct": true,
+          "clean_classification_error": false,
+          "error_appears_after_asr": false,
+          "split_context_error": false
+        }
+      }
+    }
+  ],
+  "audio_strict_9": {
+    "v02": {
+      "phobert": {
+        "correct": 7,
+        "total": 9,
+        "accuracy": 0.7777777777777778,
+        "note": "All units must match the parent sentence label. No invented aggregate label or confusion matrix for a mixed-label sentence."
+      },
+      "hybrid": {
+        "correct": 6,
+        "total": 9,
+        "accuracy": 0.6666666666666666,
+        "note": "All units must match the parent sentence label. No invented aggregate label or confusion matrix for a mixed-label sentence."
+      }
+    },
+    "v03": {
+      "phobert": {
+        "correct": 8,
+        "total": 9,
+        "accuracy": 0.8888888888888888,
+        "note": "All units must match the parent sentence label. No invented aggregate label or confusion matrix for a mixed-label sentence."
+      },
+      "hybrid": {
+        "correct": 7,
+        "total": 9,
+        "accuracy": 0.7777777777777778,
+        "note": "All units must match the parent sentence label. No invented aggregate label or confusion matrix for a mixed-label sentence."
+      }
+    }
+  },
+  "benchmark_roles": {
+    "validation_v03": "Model selection set, NOT independent final test",
+    "validation_v02": "Old validation subset, also in v03 validation",
+    "development_regression_v03": "Previously examined and informed data design; development regression benchmark, NOT independent final test",
+    "audio": "Previously examined; regression and ASR diagnostic only"
+  },
+  "hybrid_thresholds": {
+    "warning": 0.55,
+    "safe": 0.65
+  },
+  "protected_files_unchanged": true,
+  "metrics_reconciled_with_paired_counts_and_errors_csv": true,
+  "weighted_accumulation_loss_and_gradient_check_passed": true,
+  "assessment": {
+    "decision": "Promising validation improvement, not an unqualified replacement for v02; retain both checkpoints and keep pipeline on v02.",
+    "validation_macro_f1_delta": 0.13356564553319117,
+    "validation_verification_f1_delta": 0.2564102564102565,
+    "validation_warning_recall_delta": 0.0,
+    "old_validation_macro_f1_delta": 0.037659508247743556,
+    "regression_fixed_new": [
+      6,
+      1
+    ],
+    "clean_audio_macro_f1_delta": -0.04761904761904767,
+    "audio_unit_hybrid_fixed_new": [
+      2,
+      1
+    ],
+    "seed123_macro_f1_delta": -0.07487100712907169,
+    "limitations": [
+      "Small synthetic, previously examined benchmarks; no independent final evaluation.",
+      "AT002 remains incorrect on both clean and ASR text; AT005 clean remains incorrect.",
+      "AT008 clean PhoBERT and ASR Hybrid regress; unchanged thresholds can turn safe argmax into verification.",
+      "Seed-123 stability repeat is materially weaker; two seeds do not estimate reliable variance.",
+      "Per-unit audio truth is inherited from parent sentences; AT005 evidence-only unit depends on context."
+    ],
+    "next_technical_step": "Investigate sentence context and probability calibration on separate development data, then evaluate on a new untouched human-reviewed test. No additional training or threshold changes performed here."
+  }
+}

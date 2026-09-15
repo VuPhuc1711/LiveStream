@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "status": "COMPLETED_LOCKED",
+  "checkpoint": "D:\\livestream-violation-detection\\models\\phobert_v02_20260914_162150_178711\\best",
+  "checkpoint_sha256": "ceb81a6856191d451f3074e585f69b604293ef0a1d3827fe05fa18e4fab4af5b",
+  "checkpoint_hash_definition": "SHA256 of UTF-8 JSON {relative POSIX filename: file SHA256}, sorted keys, separators=(',', ':')",
+  "checkpoint_file_sha256": {
+    "added_tokens.json": "6887f87ac991379ea91aedb4dd5e1af4f6ee38693ec0ca1c2b6209559ce283d8",
+    "bpe.codes": "9dfe53fb8abbddd3387da99641c36e00bee757a3679aad9cf0a7cdc4b30f6ef8",
+    "config.json": "a812a4f5f09d84101bd97e7b93cd44bf85c5a460d4b54581e70d680b6229c8bc",
+    "model.safetensors": "fef1b0c901e60874d8d802afad1454878110dc17c587f01936375a6ca8663268",
+    "preprocessing.json": "433d3121fce452982e4837d98847a54e1c2c926a64251607f17aaaa5abbb7714",
+    "tokenizer_config.json": "551c1e392c11bda377e643e1481e0e5b0bb42e3589dd36f998ff3bc897841974",
+    "vocab.txt": "dffd7543c401fb6567253ae7c3313004532c33d062525250049c616544bad777"
+  },
+  "model_weights_sha256": "fef1b0c901e60874d8d802afad1454878110dc17c587f01936375a6ca8663268",
+  "final_test": "D:\\livestream-violation-detection\\data\\final_test_v03_chua_duyet.csv",
+  "final_test_sha256": "7b6114a9e7d6e569fd9e28d09e3f655becd8297fed7771e5704741766523b253",
+  "started_at_utc": "2026-09-14T15:11:42.688826+00:00",
+  "finished_at_utc": "2026-09-14T15:11:55.701207+00:00",
+  "locked_at_utc": "2026-09-14T15:11:55.735246+00:00",
+  "duration_seconds": 13.014254200039431,
+  "report_directory": "D:\\livestream-violation-detection\\reports\\final_test_v03_20260914_221153_869005",
+  "report_path": "D:\\livestream-violation-detection\\reports\\final_test_v03_20260914_221153_869005\\report.md",
+  "claim_path": "D:\\livestream-violation-detection\\reports\\.final_evaluation_v03.started.json",
+  "configuration": {
+    "labels": [
+      "KHONG_CANH_BAO",
+      "CAN_XAC_MINH",
+      "CANH_BAO"
+    ],
+    "seed": 42,
+    "warning_threshold": 0.55,
+    "safe_threshold": 0.65,
+    "rules_mapping": {
+      "match": "CAN_XAC_MINH",
+      "no_match": "KHONG_CANH_BAO",
+      "confidence": null
+    },
+    "preprocessing": {
+      "normalization": "NFC and collapse whitespace; preserve case and punctuation",
+      "segmenter": "underthesea.word_tokenize(format='text')",
+      "max_length": 128,
+      "note": "Use the same preprocessing during inference; different from original RDRSegmenter."
+    },
+    "local_files_only": true,
+    "device": "cuda",
+    "dtype": "torch.float32",
+    "device_name": "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+    "attention_implementation": "eager",
+    "model_eval_mode": true,
+    "inference_mode": true,
+    "batch_size": 1,
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "python_executable": "D:\\livestream-violation-detection\\.venv-nlp\\Scripts\\python.exe",
+    "versions": {
+      "torch": "2.13.0+cu126",
+      "transformers": "5.16.1",
+      "underthesea": "9.5.0",
+      "scikit-learn": "1.9.0",
+      "numpy": "2.4.6"
+    },
+    "zero_division": 0
+  },
+  "inference_counts": {
+    "hybrid_predict": 30,
+    "phobert_predict": 30,
+    "rules_detect": 30
+  },
+  "protected_files_unchanged": true,
+  "rerun_allowed": false,
+  "use_for_tuning_allowed": false,
+  "report_file_sha256": {
+    "report.md": "68cf995b0a655f1c6ff9c5a1d54e84c54928d0b3a83b076b5869524bf8359290",
+    "report.json": "51c4704e4ff819ff7f8ee8b7c69667d6ddaa202746b9e1384cb7741ef8646a49",
+    "predictions.csv": "28a2a39317e08055df032f07985cd87a7dfb87b2d1a2c2916b309a16a1760f98",
+    "inference_journal.jsonl": "b6a18fb56d41706fb47ec4924ddd789b7d00bf212676e1f85ce97bb85cd94075"
+  }
+}
