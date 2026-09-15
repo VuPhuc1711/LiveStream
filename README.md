@@ -130,6 +130,13 @@ Chạy bản thu có nhãn hiện có và xem [hướng dẫn đánh giá](AUDIO
 ```
 
 `evaluate_audio_pipeline.py` ưu tiên `classification_units` khi có; báo cáo cũ vẫn được
+## Model checkpoint
+
+Trọng số PhoBERT không được lưu trên GitHub do dung lượng lớn.
+
+Đặt checkpoint tại:
+
+models/phobert_v03_20260915_145458_712323/best
 chấm theo các segment/dự đoán cũ để so sánh. `whisper.json` chưa có nhãn cũng được tách câu
 bằng cùng thuật toán trước khi phân loại.
 
