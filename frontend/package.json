@@ -1,0 +1,1 @@
+{"name":"livestream-review","private":true,"version":"0.1.0","type":"module","scripts":{"dev":"vite","build":"tsc --noEmit && vite build","test":"vitest run"},"dependencies":{"react":"^19.1.0","react-dom":"^19.1.0"},"devDependencies":{"@types/react":"^19.1.0","@types/react-dom":"^19.1.0","jsdom":"^26.1.0","typescript":"~5.9.3","vite":"^6.4.0","vitest":"^4.1.11"}}

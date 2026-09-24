@@ -177,3 +177,30 @@ Test mock backend (dùng httpx đã có trong môi trường phát triển):
 ```powershell
 .\.venv-nlp\Scripts\python.exe -B -X utf8 -m unittest backend.test_app test_model_config test_audio_demo
 ```
+
+## Frontend React (hai terminal)
+
+Terminal 1, tại thư mục gốc:
+```powershell
+.\.venv-nlp\Scripts\python.exe -m uvicorn backend.app:app --host 127.0.0.1 --port 8000
+```
+
+Terminal 2:
+```powershell
+cd D:\livestream-violation-detection\frontend
+npm.cmd install
+npm.cmd run dev
+```
+
+Mở http://127.0.0.1:5173. Chọn/kéo thả một file MP3, M4A, WAV hoặc MP4 tối đa
+50 MiB rồi nhấn **Phân tích**. Không tự gửi lại khi lỗi. File mới sẽ xóa kết quả cũ.
+Frontend mặc định kết nối http://127.0.0.1:8000; có thể sao chép `.env.example`
+thành `.env` và đặt `VITE_API_BASE_URL`, sau đó khởi động lại Vite.
+Cổng 5173 được cố định với `strictPort` để khớp CORS.
+
+```powershell
+npm.cmd run build
+npm.cmd test
+```
+
+Dùng `npm.cmd` nếu PowerShell gọi `npm` bị lỗi đường dẫn npm-cli.js.
