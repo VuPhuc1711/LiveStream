@@ -1,0 +1,9 @@
+# Frozen artifacts must survive Windows/Linux checkout byte-for-byte.
+# -text disables newline conversion while retaining normal readable diffs.
+models/** -text whitespace=cr-at-eol
+data/current/*.csv -text whitespace=cr-at-eol
+config/data/*.json -text whitespace=cr-at-eol
+
+# Portable executable/build text; model/data bytes above remain untouched.
+docker/*.sh text eol=lf
+docker/*.Dockerfile text eol=lf

@@ -1,0 +1,192 @@
+{
+  "config": {
+    "version": "binary_v04",
+    "classification_mode": "binary",
+    "labels": [
+      "KHONG_CANH_BAO",
+      "CANH_BAO"
+    ],
+    "model": "vinai/phobert-base",
+    "seed": 42,
+    "learning_rate": 2e-05,
+    "max_epochs": 5,
+    "loss": "ce",
+    "evaluation_precision": "fp32",
+    "train": "data\\binary_v04\\train.csv",
+    "validation": "data\\binary_v04\\validation.csv",
+    "preparation": "data\\binary_v04\\preparation.json",
+    "policy_finalized": true,
+    "promotion_criteria_approved": false,
+    "selection": "validation Macro-F1 highest, equal then unweighted validation loss lowest",
+    "proposed_promotion": {
+      "independent_test_minimum_per_label": 50,
+      "macro_f1_minimum": 0.85,
+      "warning_recall_minimum": 0.95,
+      "warning_precision_minimum": 0.85,
+      "safe_false_alarm_rate_maximum": 0.1,
+      "dangerous_or_admitted_deception_false_safe_maximum": 0,
+      "regression_new_dangerous_false_safe_maximum": 0,
+      "validation_only_epoch_selection": true,
+      "known_test_sets_regression_only": true,
+      "real_livestream_claim_requires_real_sourced_test": true
+    },
+    "training_authorized": true
+  },
+  "preparation": {
+    "version": "binary_v04",
+    "status": "FROZEN_USER_APPROVED_BINARY_V04",
+    "prepared_at": "2026-10-03T15:44:42.146265+07:00",
+    "training_authorized": true,
+    "model_inference_run": false,
+    "backend_switch_authorized": false,
+    "base_total": 724,
+    "base_counts": {
+      "train": {
+        "CANH_BAO": 150,
+        "KHONG_CANH_BAO": 400
+      },
+      "validation": {
+        "KHONG_CANH_BAO": 129,
+        "CANH_BAO": 45
+      }
+    },
+    "base_membership_preserved": true,
+    "approved_additions_catalog_count": 33,
+    "already_in_base": 31,
+    "unique_new_approved": 2,
+    "new_rows_label_counts": {
+      "CANH_BAO": 2
+    },
+    "not_merged": false,
+    "potential_total_if_merged_later": 726,
+    "real_utterances_received": 0,
+    "real_final_evaluation_received": 0,
+    "policy_source": "data\\binary_v03\\platform_policy_change_20261003.json",
+    "policy_sha256": "7cce97e7cf2483b101d6d0535013912d53375337d46b710f57568dd19d059432",
+    "excluded_ids": [
+      "AI08_019",
+      "BNR_016",
+      "BNR_018",
+      "CV03_054",
+      "DV05_048",
+      "DV07_011",
+      "DV07_013",
+      "DV07_016",
+      "EXCEL_018",
+      "EXCEL_096",
+      "EXCEL_187",
+      "EXCEL_477",
+      "LS0022",
+      "LS0049",
+      "LS0052",
+      "LS0058",
+      "WB08_258"
+    ],
+    "exclusion_source": "data\\binary_v03\\scope_exclusions.json",
+    "exclusion_sha256": "31c46b8fe55e58aac55c57b6357a3df4a503ce0acc337a9a627022345a82f52d",
+    "additional_exclusion": "BNR_025 remains excluded; never restore",
+    "data_sources": [
+      {
+        "path": "data\\binary_v03\\train.csv",
+        "sha256": "2d6e01550891c95e76ee5906f7e7a542763e0ca5ea173178d1afaf478517421a"
+      },
+      {
+        "path": "data\\binary_v03\\validation.csv",
+        "sha256": "953fa21b1b168891122551cb3797f5d330b0b1f58663a55bc56573110eb4755d"
+      }
+    ],
+    "backend_config_sha256": "9fac7cda7a731bd63ccec1d1928be691574ef7c836f61538a1183913f31c7e26",
+    "proposed_split": {
+      "seed": 42,
+      "base": "550 train/174 validation immutable membership",
+      "new_approved": "Both new off-platform custom-consultation rows provisionally train; same proposed_split_group despite original different family IDs; not merged",
+      "new_real": "Reserve approximately 25% of recording sessions/groups as untouched final evaluation before inference. Split remaining new development groups approximately 80/20 train/validation. Target ratios are subordinate to group separation, class coverage and adequate sample size.",
+      "group_constraints": [
+        "Clean text and its ASR transcript/near variants always together",
+        "Review recording-session/source identity; same session stays in one split unless independence is demonstrated before assignment",
+        "Do not cross current base families; if a new row closely matches known validation, do not put it in train",
+        "If final group overlaps base development or prior reviewed validation, it is not independent final evaluation",
+        "If there are too few sessions/classes, keep final set pending and request additional real sessions rather than splitting one session into pseudo-independent sets"
+      ],
+      "final_evaluation": "Freeze texts, user labels, provenance, group membership and hashes before inference; never select epoch or tune model on final results"
+    },
+    "excluded_unapproved": "Other BNF proposals and other REVIEW_F01/F02/F03 sentences without explicit approval are not included; earlier dangerous proposals remain out of this batch",
+    "checks": {
+      "ids_unique": true,
+      "normalized_text_unique": true,
+      "no_excluded_ids_or_texts": true,
+      "base_family_overlap": false,
+      "new_not_in_base": true,
+      "new_near_family_grouped": true
+    },
+    "files_sha256": {
+      "train.csv": "c9c533971ffc48c1055f944ba1f9c225dd0bc5045d24442ec7f98ab67e696326",
+      "validation.csv": "1619dd850a508bb08c16bcf597bbdcf9f5b59b6927577adc0c9c5ec0ecf47c79",
+      "dataset_binary_v04.csv": "5c8cdb312f6469ce840886b91f76b67ee062c15f27d664bdb596885cfb1e4cf1",
+      "base_train.csv": "2d6e01550891c95e76ee5906f7e7a542763e0ca5ea173178d1afaf478517421a",
+      "base_validation.csv": "953fa21b1b168891122551cb3797f5d330b0b1f58663a55bc56573110eb4755d",
+      "approved_additions_42.csv": "2e601665e374fd38996d1a0ccbb92e90b0bf4573528f9f02fb8d896a20a73e24",
+      "candidates_review_40.csv": "479014d303ef5852cb9c271635fe7f19be32e5f1b9975a6a16c6c2eb61f6ffbf",
+      "user_approval.json": "bef35ed59b92cb7c524fb3a055886e19da9bb162e3492c23d8ff93dc47630e85"
+    },
+    "pending_review_batch": {
+      "row_count": 40,
+      "review_status": "DA_DUYET",
+      "user_approved": true,
+      "merged_into_splits": true
+    },
+    "family_review_incomplete": false,
+    "policy_pending": false,
+    "total_count": 766,
+    "added_count": 42,
+    "ready_counts": {
+      "train": {
+        "CANH_BAO": 164,
+        "KHONG_CANH_BAO": 420
+      },
+      "validation": {
+        "KHONG_CANH_BAO": 134,
+        "CANH_BAO": 48
+      }
+    },
+    "family_counts": {
+      "train": 216,
+      "validation": 67
+    },
+    "new_split_counts": {
+      "train": {
+        "KHONG_CANH_BAO": 20,
+        "CANH_BAO": 14
+      },
+      "validation": {
+        "KHONG_CANH_BAO": 5,
+        "CANH_BAO": 3
+      }
+    },
+    "validation_new_families": [
+      "BV04R_F01",
+      "BV04R_F06",
+      "BV04R_F13",
+      "BV04R_F18"
+    ],
+    "user_exclusion_file": "data\\binary_v04\\excluded_dangerous_rows.csv",
+    "user_exclusion_sha256": "73db4d7450ca51430a58c6c61c370649d3f82a697cf32336310a808be22825c9",
+    "group_merges": [
+      {
+        "family_id": "BV04_CUSTOM_CONSULT_OFF_TIKTOK_F01",
+        "original_families": [
+          "BV04R_F16",
+          "BV04R_F17",
+          "BV04R_F20",
+          "BNF_F07",
+          "REVIEW_F03"
+        ],
+        "split": "train",
+        "reason": "Near consultation outside TikTok followed by on-platform purchase; grouping prevents leakage, original_family_id preserved"
+      }
+    ]
+  },
+  "config_sha256": "b568a4d5aa0f267b64a91749cac01645c6cfb28fb16553085a1cc2c5d745d5d4",
+  "allocator": "expandable_segments:True",
+  "checkpoint_max_shard_size": "100MB"
+}

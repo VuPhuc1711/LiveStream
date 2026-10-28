@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "phobert": {
+    "run_directory": "models/phobert_binary_v04_20261003_092559_043789",
+    "checkpoint": "models/phobert_binary_v04_20261003_092559_043789/seed42/best",
+    "lock_sha256": "81a03c111eacf0572aec5ddc4d59c302f92bb759aca996c2e84b5946d2e55594"
+  },
+  "whisper": {
+    "model": "turbo",
+    "path": "runtime/asr-models/large-v3-turbo.pt",
+    "sha256": "aff26ae408abcba5fbf8813c21e62b0941638c5f6eebfb145be0c9839262a19a",
+    "official_url": "https://openaipublic.azureedge.net/main/whisper/models/aff26ae408abcba5fbf8813c21e62b0941638c5f6eebfb145be0c9839262a19a/large-v3-turbo.pt"
+  }
+}

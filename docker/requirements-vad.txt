@@ -1,0 +1,4 @@
+# Deliberately installed with --no-deps. The application loads bundled JIT
+# directly, without importing silero_vad's optional torchaudio/ONNX helpers.
+# Never let this package select or replace the pinned CUDA PyTorch build.
+silero-vad==6.2.1

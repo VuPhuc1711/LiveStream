@@ -1,0 +1,123 @@
+{
+  "dataset_version": "train_test_view_20261028",
+  "created_date": "2026-10-28",
+  "operation": "Preserve existing training membership; rename previous validation role to test at explicit user request",
+  "training_authorized": false,
+  "inference_run": false,
+  "checkpoint_changed": false,
+  "labels": [
+    "KHONG_CANH_BAO",
+    "CANH_BAO"
+  ],
+  "label_mapping": {
+    "0": "KHONG_CANH_BAO",
+    "1": "CANH_BAO"
+  },
+  "total_count": 766,
+  "label_counts": {
+    "CANH_BAO": 212,
+    "KHONG_CANH_BAO": 554
+  },
+  "original_columns": [
+    "id",
+    "text",
+    "label",
+    "family_id",
+    "category",
+    "reason",
+    "review_status",
+    "reviewer",
+    "source_file",
+    "source_sheet",
+    "source",
+    "original_family_id",
+    "split_group_id",
+    "split"
+  ],
+  "current_columns": [
+    "id",
+    "text",
+    "label",
+    "family_id",
+    "category",
+    "reason",
+    "review_status",
+    "reviewer",
+    "source_file",
+    "source_sheet",
+    "source",
+    "original_family_id",
+    "split_group_id",
+    "split",
+    "original_split",
+    "evaluation_role",
+    "seen_by_development"
+  ],
+  "model_note": {
+    "active_version": "binary_v04",
+    "active_checkpoint": "models/phobert_binary_v04_20261003_092559_043789/seed42/best",
+    "existing_checkpoint_was_trained_using_this_new_view": false,
+    "historical_split_names": [
+      "train",
+      "validation"
+    ],
+    "historical_epoch_selection": "validation Macro-F1, tie lower loss",
+    "frozen_checkpoint_metadata_modified": false
+  },
+  "test_evaluation": {
+    "independent": false,
+    "role": "REGRESSION_PREVIOUS_VALIDATION",
+    "reason": "These 182 rows already selected binary_v04 checkpoint and were seen during development; filename test.csv does not make them an independent test",
+    "never_use_for_new_epoch_selection": true,
+    "future_training_requires_new_authorization_and_predeclared_selection_protocol": true
+  },
+  "supplementary_feedback_merged": false,
+  "split_membership_changed": false,
+  "approved_labels_changed": false,
+  "checks": {
+    "ids_unique": true,
+    "normalized_text_unique": true,
+    "no_id_cross_split": true,
+    "no_text_cross_split": true,
+    "no_family_cross_split": true,
+    "no_split_group_cross_split": true,
+    "both_labels_in_each_split": true,
+    "all_rows_approved": true
+  },
+  "files": {
+    "train": {
+      "path": "data/current/train.csv",
+      "sha256": "caccdd1f465633f92f1608753db1ffda6ec793dd51dc9eacd79d8240924e8606",
+      "count": 584,
+      "label_counts": {
+        "CANH_BAO": 164,
+        "KHONG_CANH_BAO": 420
+      },
+      "family_count": 216,
+      "split_group_count": 216,
+      "source_original_path": "data/binary_v04/train.csv",
+      "source_archived_path": "D:\\lưu trữ\\livestream-violation-detection_20261028\\data\\binary_v04\\train.csv",
+      "source_sha256": "c9c533971ffc48c1055f944ba1f9c225dd0bc5045d24442ec7f98ab67e696326",
+      "source_rows_sha256": "f9858aacdf00ace54646238178d271d37f25696766f5c347a7cc84de55384a18",
+      "original_split": "train",
+      "independent_test": null
+    },
+    "test": {
+      "path": "data/current/test.csv",
+      "sha256": "f386c8d1291d0576ed8bc55aedc03306e7749fdf979ce179ce91687293574092",
+      "count": 182,
+      "label_counts": {
+        "KHONG_CANH_BAO": 134,
+        "CANH_BAO": 48
+      },
+      "family_count": 67,
+      "split_group_count": 67,
+      "source_original_path": "data/binary_v04/validation.csv",
+      "source_archived_path": "D:\\lưu trữ\\livestream-violation-detection_20261028\\data\\binary_v04\\validation.csv",
+      "source_sha256": "1619dd850a508bb08c16bcf597bbdcf9f5b59b6927577adc0c9c5ec0ecf47c79",
+      "source_rows_sha256": "333af5fe0222041cf86150989b6a1107cfc5f094639e940d8af60e560cf5e619",
+      "original_split": "validation",
+      "independent_test": false
+    }
+  }
+}

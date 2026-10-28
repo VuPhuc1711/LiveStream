@@ -1,206 +1,206 @@
 # Livestream Violation Detection
 
-Project scaffold for livestream speech transcription and violation detection.
+Ứng dụng hỗ trợ kiểm duyệt lời nói trong livestream bán hàng: nhận âm thanh từ
+**microphone hoặc tab Chrome/Edge**, hiển thị transcript, đánh dấu câu cần chú ý,
+lưu lịch sử và thu thập phản hồi. Đây là bản thử nghiệm theo quy ước của dự án.
 
-## Structure
+**Đang dùng:** Whisper Turbo CUDA/FP16 + Silero VAD → PhoBERT **binary_v04** CPU
+→ PostgreSQL Docker. Hai nhãn: `KHONG_CANH_BAO`, `CANH_BAO`. Không chạy Rules/Hybrid.
+Nâng cấp model đang tạm dừng; xuất/duyệt CSV không tự train.
 
-- `speech/`: audio transcription utilities
-- `audio/`: sample audio files
-- `nlp/`: natural language processing logic
-- `models/`: trained or downloaded model files
-- `data/`: datasets and processed data
-- `main.py`: application entry point
+**Dữ liệu hiện quản lý theo hai phần:** [train.csv](data/current/train.csv)
+**584 câu**, [test.csv](data/current/test.csv) **182 câu**. Test là toàn bộ validation
+cũ đã dùng chọn checkpoint v04, nên đây là bộ hồi quy đã xem, **không phải test
+độc lập**. Giữ nguyên nhãn/ID/family và membership; chưa train lại. Hồ sơ nguồn/hash
+ở [current_dataset.json](config/data/current_dataset.json). Metadata checkpoint cũ
+vẫn giữ đúng lịch sử train/validation, không đổi tên để làm sai bằng chứng.
 
-## Chạy demo trên file âm thanh
+Ngày28/10/2026, dữ liệu/checkpoint/công cụ lịch sử đã được chuyển ra ngoài dự án:
+**`D:\lưu trữ\livestream-violation-detection_20261028`**. Vị trí và manifest ở
+[bản mẫu cấu hình lưu trữ](config/storage.example.json); `config/storage.json`
+thật là cấu hình local được Git bỏ qua. Giữ nguyên model đang chọn, cache
+Whisper, database, feedback và audio debug trong dự án/volume Docker.
 
-Demo chạy toàn bộ file qua **Whisper small một lần**, lấy các segment `start`, `end`, `text`,
-rồi tách mỗi segment thành các câu theo dấu `.`, `?`, `!` để tạo **classification unit**.
-HybridDetector dự đoán từng unit riêng, không dùng một dự đoán chung cho hai câu có dấu phân cách.
-Whisper và PhoBERT mỗi model chỉ
-nạp một lần. Whisper được giải phóng trước khi nạp PhoBERT để giảm mức dùng VRAM.
+Trên Windows CUDA/FP16, backend chọn nhánh classic cuBLAS cho biased `addmm`
+(`DISABLE_ADDMM_CUDA_LT=1` trong riêng tiến trình) để tránh lỗi heuristic cuBLASLt
+đã ghi nhận. Không đổi model/precision. Sau khi cả hai model đã nạp, startup chạy
+phép chiếu encoder thật trong worker; lỗi thì không báo ready. Health hiển thị
+`whisper_config.cuda_runtime`, `runtime_self_check` và `asr_runtime`.
+Muốn đối chiếu nhánh gốc phải đặt `$env:DISABLE_ADDMM_CUDA_LT='0'` **trước khi
+khởi động tiến trình mới**; không đổi giữa phiên vì PyTorch cache cờ này.
+Chi tiết: [bản sửa CUDA](docs/BAO_CAO_SUA_CUDA_20261024.md).
 
-Hybrid trong demo bắt buộc dùng `models/phobert_v02_20260914_162150_178711/best`.
-Chương trình đối chiếu SHA-256 với bản khóa checkpoint, in đường dẫn thực tế sau khi nạp
-và lưu đường dẫn đó vào JSON. Các API detector cũ vẫn giữ mặc định riêng; demo truyền
-checkpoint v02 tường minh, không dùng mặc định của chúng.
+## Đọc dự án từ đâu?
 
-Chạy bằng PowerShell, không cần activate môi trường:
+1. [Hướng dẫn đọc và trình bày](docs/HUONG_DAN_DU_AN.md): chức năng, kiến trúc, luồng xử lý.
+2. [Quy ước hai nhãn](BINARY_LABELING_GUIDE.md): phạm vi cảnh báo và ví dụ.
+3. [Trạng thái hiện tại](PROJECT_STATUS.md): phiên bản, kết quả kiểm tra và hạn chế.
+4. Đọc `backend/app.py` và `frontend/src/App.tsx` để đi vào mã nguồn.
+
+## Bố cục
+
+```text
+backend/       API, realtime, database, lịch sử và phản hồi
+frontend/      giao diện React/Vite, thu microphone và audio tab
+speech/        Whisper, cấu hình ASR và đơn vị câu
+nlp/           PhoBERT, mapping và dự đoán hai nhãn
+config/        manifest dữ liệu hiện hành và vị trí lưu trữ bên ngoài
+tests/         test ứng dụng hiện tại; test giao diện ở frontend/src/
+tools/         công cụ bảo trì/chẩn đoán, không tự train
+docs/          hướng dẫn đọc dự án và báo cáo ngắn
+data/current/  chỉ hai CSV: train.csv và test.csv
+models/        chỉ checkpoint binary_v04 đang chọn, giữ nguyên đường dẫn
+runtime/       audio debug, CSV xuất và dữ liệu phát sinh local
+backups/       bản sao lưu database/cấu hình riêng tư
+```
+
+Hai file cấu hình **đang có hiệu lực** ở gốc: `asr_config.json` và
+`pipeline_model.json`. `compose.yaml` quản lý PostgreSQL; `alembic.ini` quản lý
+migration. `.env` chứa thông tin kết nối riêng tư, không đưa vào Git.
+
+## Phạm vi đưa lên Git
+
+Giữ mã ứng dụng, migrations, tests, tài liệu, hai CSV hiện hành, manifest/checksum,
+`pipeline_model.json`, `asr_config.json`, các file dependency và lockfile frontend.
+Chia sẻ `.env.example`, `frontend/.env.example` và `config/storage.example.json`
+để mỗi người tạo cấu hình local khi cần.
+
+`.env`, `config/storage.json`, môi trường Python, node_modules, runtime/debug,
+backups/database và trọng số lớn được Git bỏ qua. Không cần xóa những file này
+khỏi máy để chia sẻ source. Lịch sử/feedback trong PostgreSQL không tự đồng bộ
+qua Git. Kho lưu trữ ở ổ D là riêng của máy hiện tại, không phải điều kiện chạy app.
+
+Môi trường phát triển Docker dùng dependency Linux được khóa riêng. Checkpoint
+được xác minh bằng định danh tương đối và đầy đủ SHA-256, hỗ trợ clone khác thư
+mục/Windows/Linux mà không sửa bản khóa gốc. Máy mới vẫn phải nhận model riêng
+và có GPU tương thích; xem [hướng dẫn Docker](docker/README.md).
+
+`main.py` và `model_config.py` gốc đã chuyển vào kho ngoài dự án, tại
+`archive/legacy_cli_20261028/`. Web dùng `backend/model_runtime.py` và
+`backend/model_config.py`; đây là các file hiện hành cần giữ. Hai file CLI cũ
+được bảo toàn byte/hash trong `manifest_legacy_cli_20261028.json` ở root lưu trữ.
+Muốn chạy lại công cụ lịch sử phải khôi phục đường dẫn gốc trước, không chạy
+trực tiếp bản lưu trữ hoặc dùng CLI Whisper-small cũ để demo ứng dụng hiện tại.
+
+Dataset/checkpoint/report, cấu hình train/rollback và script nghiên cứu cũ giữ
+nguyên byte trong thư mục lưu trữ bên ngoài. **754 file/8,60GB**, có manifest hash
+và đường dẫn gốc để khôi phục. Đợt tiếp theo lưu thêm hai file CLI cũ, tổng756
+file; manifest đợt754 file trước giữ nguyên. Thư mục `outputs` có một junction thư viện: chỉ
+đổi tên cùng ổ D, không truy cập/di chuyển nội dung thư viện được liên kết.
+Không tự chạy lại script train hoặc sửa lock/hash lịch sử. Checkpoint cũ cần
+khôi phục về đường dẫn gốc trước khi rollback; không sửa lock để ép nạp.
+
+## Chạy bằng Docker Compose
+
+Compose gồm `frontend`, `backend` và `postgres`. Giữ Whisper Turbo CUDA/FP16,
+PhoBERT binary_v04 CPU và volume `livestream-detection_postgres_data` hiện có.
+Trình duyệt trên Windows vẫn là nơi xin quyền microphone/chia sẻ tab.
+
+Máy hiện tại đã có `.env` và model, chạy từ gốc repository:
 
 ```powershell
 Set-Location 'D:\livestream-violation-detection'
-.\.venv-nlp\Scripts\python.exe -B -X utf8 .\main.py '.\audio\voicetiengviet.mp3'
+docker compose up -d --build --wait --wait-timeout 600
+docker compose ps
 ```
 
-Đổi đối số cuối thành đường dẫn audio khác, đặt trong dấu nháy nếu có khoảng trắng.
-Đường dẫn audio tương đối được tính từ thư mục PowerShell hiện tại; checkpoint và thư mục
-reports luôn được tính từ vị trí `main.py`.
+Mở http://127.0.0.1:5173/; health tại http://127.0.0.1:8000/health.
+Không chạy đồng thời backend/frontend native trên cùng cổng hoặc thêm nhiều
+worker model. Mã nguồn được bind mount; sửa Python thì `docker compose restart
+backend`, frontend tự tải lại. Đổi dependency/Dockerfile thì build lại dịch vụ đó.
 
-Kiểm tra môi trường riêng, không chạy audio hay nạp model:
+Máy bạn cùng phát triển: clone source, tạo `.env` từ bản mẫu, nhận hai bộ trọng số
+riêng và kiểm tra hash trước khi chạy. Làm theo [Docker README](docker/README.md)
+về GPU, assets, test, sao lưu và quay lại cách chạy Windows. Git không đồng bộ
+database/feedback giữa hai máy; xuất CSV không tự đánh dấu đã train.
+
+## Chạy trực tiếp trên Windows (phương án quay lại)
+
+Yêu cầu môi trường `.venv-nlp` đang có của dự án, FFmpeg trong PATH, Node/npm,
+Docker Desktop đang chạy và file `.env` được cấu hình theo `.env.example`.
+Không cần extension hoặc đưa lên Chrome Web Store để demo local.
+
+PowerShell thứ nhất, từ gốc repository:
 
 ```powershell
-.\.venv-nlp\Scripts\python.exe -B -X utf8 .\main.py --check-environment
-ffmpeg -version
+Set-Location 'D:\livestream-violation-detection'
+docker compose stop backend frontend
+docker compose up -d --wait postgres
+.\.venv-nlp\Scripts\python.exe -m alembic upgrade head
+.\.venv-nlp\Scripts\python.exe -X utf8 -m uvicorn backend.app:app --host 127.0.0.1 --port 8000 --ws-max-size 65536 --ws-max-queue 8
 ```
 
-Mặc định `--device auto` chọn CUDA nếu khả dụng. Có thể dùng `--device cpu` khi không
-muốn dùng GPU hoặc thiếu VRAM; CPU có thể chạy chậm hơn:
+PowerShell thứ hai:
 
 ```powershell
-.\.venv-nlp\Scripts\python.exe -B -X utf8 .\main.py '.\audio\voicetiengviet.mp3' --device cpu
-```
-
-### Môi trường đã kiểm tra
-
-Python 3.11 trong `.venv-nlp`, PyTorch `2.13.0+cu126` (CUDA 12.6), Transformers `5.16.1`,
-Underthesea `9.5.0`, `openai-whisper==20250625`, FFmpeg `9.0.1` trong PATH.
-Đợt tích hợp chỉ bổ sung `openai-whisper==20250625`, `numba==0.67.0`, `llvmlite==0.49.0`,
-`more-itertools==11.1.0`, `tiktoken==0.14.0`; giữ nguyên PyTorch CUDA và các gói có sẵn.
-
-Nếu thiếu gói, `--check-environment` sẽ báo tên cụ thể. Không chạy nâng cấp toàn bộ môi
-trường hoặc cài lại PyTorch khi CUDA đang hoạt động. Trên một bản sao của đúng môi trường
-này, có thể bổ sung các gói vừa nêu bằng lệnh sau (các dependency nền phải có sẵn):
-
-```powershell
-.\.venv-nlp\Scripts\python.exe -m pip install --no-deps openai-whisper==20250625 numba==0.67.0 llvmlite==0.49.0 more-itertools==11.1.0 tiktoken==0.14.0
-.\.venv-nlp\Scripts\python.exe -m pip check
-```
-
-Whisper dùng cache mặc định `%USERPROFILE%\.cache\whisper` (hoặc theo `XDG_CACHE_HOME`).
-Máy hiện có `small.pt`; nếu cache chưa có, Whisper cần tải trọng số trong lần chạy đầu.
-PhoBERT chỉ nạp từ checkpoint cục bộ. FFmpeg là chương trình riêng, phải chạy được
-`ffmpeg -version` trong cùng cửa sổ PowerShell.
-
-### Kết quả demo
-
-Mỗi lần chạy tạo thư mục mới `reports/audio_demo_<timestamp>/`:
-
-- `whisper.json`: toàn bộ kết quả Whisper, lưu ngay sau bước nhận dạng.
-- `result.json`: thời gian chạy UTC, đường dẫn/hash audio và checkpoint, môi trường,
-  toàn văn transcript, raw segment, kết quả từng classification unit và thống kê nhãn cuối. Nội dung cũng được in ra terminal.
-- `error.json`: chỉ xuất hiện nếu quá trình sau khi tạo thư mục bị lỗi; không ghi đè báo cáo cũ.
-
-`result.json` phiên bản 2 có:
-
-- `whisper_segments`: giữ nguyên toàn bộ segment và metadata từ Whisper để truy vết.
-- `classification_units`: mỗi câu có `unit_id`, `source_segment_id`, `source_segment_index`,
-  `text`, `start`, `end`, `timestamp_is_approximate` và các kết quả dưới đây.
-- `segments`: alias tương thích của `classification_units`, vẫn có `id/start/end/text/status`
-  và kết quả theo cấu trúc cũ. `summary.total_segments` là độ dài alias này;
-  dùng `summary.whisper_segment_count` và `summary.classification_unit_count` để phân biệt hai số lượng.
-
-Mỗi unit giữ nguyên nội dung/dấu câu của phần tương ứng trong raw text, chỉ bỏ khoảng trắng
-ở hai đầu. Không tạo unit cho đoạn rỗng hoặc chỉ có dấu câu. Phần cuối chưa có dấu kết thúc
-vẫn được giữ thành một unit. Không dùng nhãn/câu tham chiếu để tách và không ép số unit bằng 9.
-Nếu Whisper bỏ hẳn dấu phân cách giữa hai câu, cách tách theo dấu câu không tự suy ra ranh giới đó.
-
-`start/end` tính bằng giây từ đầu file. Khi một segment chứa nhiều câu, khoảng thời gian được
-chia theo tỷ lệ độ dài ký tự; tất cả unit trong segment đó có `timestamp_is_approximate=true`.
-Đây không phải word timestamp. `false` chỉ có nghĩa dùng nguyên khoảng segment Whisper,
-không xác nhận mốc ASR đã chính xác theo bản thu.
-
-- `phobert_result.label/confidence/probabilities`: nhãn và xác suất softmax của PhoBERT.
-- `rule_result.needs_review/findings`: Rules có khớp hay không, các cụm từ/câu và nhóm khớp.
-- `final_label`: quyết định của Hybrid theo ngưỡng đã có: `CANH_BAO` ≥ 0.55,
-  `KHONG_CANH_BAO` ≥ 0.65; các trường hợp còn lại chuyển `CAN_XAC_MINH`.
-- `final_confidence`: xác suất **PhoBERT dành cho nhãn cuối**, có thể khác confidence
-  của nhãn PhoBERT ban đầu; không phải độ tin cậy tổng hợp hoặc confidence của Whisper.
-- `explanation`: giải thích bằng tiếng Việt của Hybrid.
-
-Demo không có nhãn thật để tính Accuracy/F1. Các quyết định phụ thuộc văn bản ASR và
-ranh giới segment; cần xem transcript khi đối chiếu với audio. Đây là xử lý file âm thanh,
-chưa có giao diện web hoặc thu/phân tích livestream trực tiếp.
-
-Lần chạy thử trước khi đổi phân đoạn ngày 14/09/2026 trên `audio/voicetiengviet.mp3` (khoảng 164 giây) hoàn tất
-trong 28.13 giây trên RTX 3050 Ti Laptop: 32 segment, 9 `KHONG_CANH_BAO`,
-23 `CAN_XAC_MINH`, 0 `CANH_BAO`. Kết quả ở
-`reports/audio_demo_20260914_231336_035723/result.json`.
-Transcript nhận được là bản tin truy nã, khác nội dung bán hàng dùng để xây dựng model;
-thống kê trên chỉ mô tả đầu ra demo, không xác nhận nhãn đúng/sai của các đoạn.
-
-Kiểm tra luồng bằng dữ liệu giả, không dùng dataset/final test hoặc nạp trọng số model:
-
-```powershell
-.\.venv-nlp\Scripts\python.exe -B -X utf8 -m unittest test_audio_demo -v
-```
-
-Chạy bản thu có nhãn hiện có và xem [hướng dẫn đánh giá](AUDIO_TEST_GUIDE.md):
-
-```powershell
-.\.venv-nlp\Scripts\python.exe -B -X utf8 .\main.py '.\audio\audio_test_9_sentences.m4a'
-```
-
-`evaluate_audio_pipeline.py` ưu tiên `classification_units` khi có; báo cáo cũ vẫn được
-## Model checkpoint
-
-Trọng số PhoBERT không được lưu trên GitHub do dung lượng lớn.
-
-Đặt checkpoint tại:
-
-models/phobert_v03_20260915_145458_712323/best
-chấm theo các segment/dự đoán cũ để so sánh. `whisper.json` chưa có nhãn cũng được tách câu
-bằng cùng thuật toán trước khi phân loại.
-
-Phần demo không train, chỉnh Rules/ngưỡng, sửa dữ liệu hay checkpoint. Các báo cáo và
-khóa đánh giá final test v03 đã có được giữ nguyên; không chạy lại đánh giá cuối.
-
-## Backend FastAPI (thử nghiệm nội bộ)
-
-Cài vào môi trường NLP hiện có và chạy từ thư mục gốc dự án:
-
-```powershell
-.\.venv-nlp\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv-nlp\Scripts\python.exe -m uvicorn backend.app:app --host 127.0.0.1 --port 8000
-```
-
-Swagger: http://127.0.0.1:8000/docs. Mở `POST /analyze-audio` → **Try it out** →
-chọn file M4A ở trường `file` → **Execute**. `GET /health` cho biết model đã sẵn sàng.
-
-```powershell
-curl.exe -X POST "http://127.0.0.1:8000/analyze-audio" -F "file=@audio/audio_test_9_sentences.m4a"
-```
-
-Hỗ trợ MP3/M4A/WAV/MP4, tối đa 50 MiB mỗi file; file tạm được dọn sau xử lý.
-Whisper small (CPU) và PhoBERT (CUDA nếu có) nạp một lần mỗi lần khởi động.
-Whisper dùng CPU để giữ cả hai model trong bộ nhớ trên máy GPU 4 GB; xử lý sẽ chậm hơn CUDA.
-Chạy **một worker**, không dùng `--reload` khi thử model để tránh nạp nhiều bản.
-Các request suy luận được xử lý tuần tự. Checkpoint lấy từ `pipeline_model.json` và kiểm tra hash.
-CORS chỉ cho localhost/127.0.0.1 cổng 5173. Backend không lưu upload hoặc báo cáo lâu dài.
-
-Response giữ cả ba nhãn: `KHONG_CANH_BAO` có thể ẩn ở frontend,
-`CAN_XAC_MINH` cần kiểm duyệt, `CANH_BAO` ưu tiên cao.
-`final_confidence` là xác suất PhoBERT của nhãn cuối, không phải confidence của Whisper.
-Timestamp ước lượng được đánh dấu `timestamp_is_approximate`; không trả token Whisper.
-Lỗi 400: file thiếu/rỗng/sai định dạng/hỏng; 413: quá lớn; 500: xử lý thất bại.
-
-Test mock backend (dùng httpx đã có trong môi trường phát triển):
-
-```powershell
-.\.venv-nlp\Scripts\python.exe -B -X utf8 -m unittest backend.test_app test_model_config test_audio_demo
-```
-
-## Frontend React (hai terminal)
-
-Terminal 1, tại thư mục gốc:
-```powershell
-.\.venv-nlp\Scripts\python.exe -m uvicorn backend.app:app --host 127.0.0.1 --port 8000
-```
-
-Terminal 2:
-```powershell
-cd D:\livestream-violation-detection\frontend
+Set-Location 'D:\livestream-violation-detection\frontend'
 npm.cmd install
-npm.cmd run dev
+npm.cmd run dev -- --host 127.0.0.1 --port 5173 --strictPort
 ```
 
-Mở http://127.0.0.1:5173. Chọn/kéo thả một file MP3, M4A, WAV hoặc MP4 tối đa
-50 MiB rồi nhấn **Phân tích**. Không tự gửi lại khi lỗi. File mới sẽ xóa kết quả cũ.
-Frontend mặc định kết nối http://127.0.0.1:8000; có thể sao chép `.env.example`
-thành `.env` và đặt `VITE_API_BASE_URL`, sau đó khởi động lại Vite.
-Cổng 5173 được cố định với `strictPort` để khớp CORS.
+Nếu dependency đã có thì bỏ bước `npm.cmd install`. Chỉ chạy một backend, không
+bật `--reload`/nhiều worker khi demo model. Cài các dependency backend còn thiếu
+bằng `requirements.txt`; Silero dùng `requirements-vad.txt` với `--no-deps` để
+không thay bộ PyTorch CUDA đang hoạt động. Không cần cài lại môi trường khi demo.
+
+- **Frontend:** http://127.0.0.1:5173/
+- **Kiểm tra backend/model/database:** http://127.0.0.1:8000/health
+- **API:** http://127.0.0.1:8000/docs
+
+## Demo một tab livestream
+
+1. Mở livestream có tiếng trong Chrome/Edge.
+2. Mở frontend trong tab khác của chính trình duyệt đó.
+3. Chọn **Tab livestream → Chọn tab livestream → Tab Chrome/Edge**, chọn tab live
+   và bật **Chia sẻ âm thanh của tab**. Không chọn cửa sổ/toàn màn hình.
+4. Theo dõi transcript và câu cảnh báo. Để kiểm tra microphone, dùng mục riêng
+   **Microphone**. Upload/thu xong thành file vẫn ở mục phân tích bản ghi.
+5. Bấm kết thúc, đợi xử lý phần cuối rồi mở lịch sử/xuất JSON hoặc sửa phản hồi.
+
+Chỉ audio được gửi tới backend; không gửi hình ảnh/URL/tiêu đề tab. Audio lịch sử
+không được lưu để nghe lại. Có thể bật **Lưu audio debug cho phiên thử** trước
+khi bắt đầu; file ở `runtime/live-debug/<session_id>/`, mặc định tắt.
+
+Whisper có thể nhận sai. Đoạn ASR chưa nhận dạng đáng tin cậy được hiển thị riêng,
+không coi là nhãn an toàn. Xem [báo cáo ASR](docs/BAO_CAO_SUA_ASR_20261024.md).
+PhoBERT cũng còn lỗi, đặc biệt một số lời mời đặt qua Zalo. Kết quả hỗ trợ rà soát,
+chưa bao phủ mọi chính sách TikTok hoặc chứng minh tác động lên kênh/doanh thu.
+
+## Database và dữ liệu bổ sung
+
+PostgreSQL chạy riêng trong Docker, cổng local `127.0.0.1:5433`; backend/frontend
+chạy trực tiếp trên Windows. `.env` quy định database và tài khoản. Migration ở
+`backend/migrations/`. Không xóa volume khi dừng/chạy lại.
+
+Phản hồi tách khỏi transcript/dự đoán gốc. Mẫu được **Duyệt đưa vào dữ liệu** lưu
+trong PostgreSQL; xuất CSV tạo snapshot/hash và bản sao ở `runtime/data-exports/`.
+Xuất file không đánh dấu đã dùng train. Chưa tự ghép train/validation hoặc train
+binary_v05. Chi tiết sao lưu/khôi phục đã có trong
+tài liệu đầy đủ tại `archive/docs/README_before_cleanup_20261024.md` dưới thư mục
+lưu trữ ngoài dự án (xem `config/storage.json`).
+
+## Kiểm tra kỹ thuật
 
 ```powershell
+Set-Location 'D:\livestream-violation-detection'
+.\.venv-nlp\Scripts\python.exe -m unittest discover -s tests -t .
+Set-Location .\frontend
+npm.cmd test -- --run
 npm.cmd run build
-npm.cmd test
 ```
 
-Dùng `npm.cmd` nếu PowerShell gọi `npm` bị lỗi đường dẫn npm-cli.js.
+Test backend dùng database tạm. PostgreSQL integration chỉ chạy khi đặt
+`$env:RUN_POSTGRES_TESTS='1'`; các database test có tên riêng, không xóa dữ liệu thật.
+Các test/benchmark ba nhãn và script cũ nằm trong archive, không nằm trong bộ test
+ứng dụng hiện hành; chúng đã ở thư mục lưu trữ ngoài dự án.
+Giữ mọi biến thể cùng family một split khi có yêu cầu train sau này; không dùng
+`test.csv` để chọn epoch hoặc điều chỉnh mô hình.
+
+Kiểm tra kho lịch sử là **tùy chọn**, chỉ dành cho người đã nhận kho lưu trữ và
+cấu hình `config/storage.json` theo [hướng dẫn cấu hình](config/README.md):
+
+```powershell
+.\.venv-nlp\Scripts\python.exe -m tools.verify_archive
+# Tùy chọn đọc thêm khoảng8,6GB để kiểm tra toàn bộ754 file đã chuyển:
+.\.venv-nlp\Scripts\python.exe -m tools.verify_archive --all
+```

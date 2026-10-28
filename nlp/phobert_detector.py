@@ -9,9 +9,10 @@ from pathlib import Path
 from typing import TypedDict
 
 import torch
-from transformers import AutoModelForSequenceClassification, AutoTokenizer
+from transformers import AutoConfig, AutoModelForSequenceClassification, AutoTokenizer
 from underthesea import word_tokenize
-from model_config import get_default_checkpoint
+from backend.model_config import get_default_checkpoint
+from nlp.label_mapping import validate_mapping
 
 
 LABELS = ("KHONG_CANH_BAO", "CAN_XAC_MINH", "CANH_BAO")
@@ -31,6 +32,7 @@ class PhoBertDetector:
         self,
         checkpoint_path: str | Path | None = None,
         device: str | None = None,
+        classification_mode: str = 'three_class',
     ):
         self.checkpoint_path = (
             get_default_checkpoint() if checkpoint_path is None else Path(checkpoint_path).resolve()
@@ -58,6 +60,8 @@ class PhoBertDetector:
         self.device = torch.device(
             device if device is not None else ("cuda" if torch.cuda.is_available() else "cpu")
         )
+        # Reject a wrong task before allocating tokenizer/model weights.
+        validate_mapping(AutoConfig.from_pretrained(self.checkpoint_path, local_files_only=True), classification_mode)
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.checkpoint_path, use_fast=False, local_files_only=True
         )
@@ -66,19 +70,13 @@ class PhoBertDetector:
             local_files_only=True,
             attn_implementation="eager",
         )
-        expected_id2label = dict(enumerate(LABELS))
-        expected_label2id = {label: index for index, label in enumerate(LABELS)}
-        if (
-            self.model.config.id2label != expected_id2label
-            or self.model.config.label2id != expected_label2id
-        ):
-            raise ValueError("Label mapping của checkpoint không khớp train_phobert.py.")
-        self.labels = tuple(self.model.config.id2label[i] for i in range(len(LABELS)))
+        self.labels = validate_mapping(self.model.config, classification_mode)
+        self.classification_mode = classification_mode
         self.model.to(self.device)
         self.model.eval()
 
     def predict(self, text: str) -> Prediction:
-        """Trả về nhãn, confidence và ba xác suất softmax trong khoảng [0, 1].
+        """Trả về nhãn, confidence và xác suất của đúng mapping checkpoint.
 
         Giới hạn token và cách cắt câu dài giống lúc huấn luyện.
         Confidence là xác suất của nhãn được chọn, chưa được hiệu chỉnh.

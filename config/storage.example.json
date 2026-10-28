@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "external_root": "E:/project-history",
+  "transfer_manifest": "E:/project-history/manifest_20261028.json",
+  "legacy_manifest": "archive/manifest_20261024.json",
+  "legacy_local_roots": [
+    "backups"
+  ],
+  "additional_manifests": [],
+  "current_dataset": "config/data/current_dataset.json",
+  "completed": false
+}

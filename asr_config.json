@@ -1,0 +1,9 @@
+{
+  "model": "turbo",
+  "device": "cuda",
+  "precision": "fp16",
+  "language": "vi",
+  "task": "transcribe",
+  "initial_prompt": "TikTok, TikTok Shop, Shopee, Lazada, Zalo, Messenger, top 1, lượt bán, gian hàng.",
+  "download_root": "runtime/asr-models"
+}

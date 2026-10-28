@@ -1,0 +1,5 @@
+{
+  "normalization": "NFC and collapse whitespace; preserve case and punctuation",
+  "segmenter": "underthesea.word_tokenize(format='text')",
+  "max_length": 128
+}

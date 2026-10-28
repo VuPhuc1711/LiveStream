@@ -19,8 +19,12 @@ htmlcov/
 *.pem
 *.key
 
+# Machine-local archive location; share the template instead.
+/config/storage.json
+
 # Large machine-learning weights
 models/**/model.safetensors
+models/**/*.safetensors
 models/**/pytorch_model.bin
 models/**/optimizer.pt
 models/**/scheduler.pt
@@ -47,6 +51,7 @@ uploads/
 
 # IDE and operating system
 .vscode/
+.uv-cache/
 .idea/
 Thumbs.db
 .DS_Store
@@ -64,3 +69,13 @@ frontend/.vite/
 # Backend runtime files for later
 backend/uploads/
 backend/temp/
+
+# Local history database and SQLite sidecars
+runtime/
+*.sqlite*
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+backups/
+*.dump

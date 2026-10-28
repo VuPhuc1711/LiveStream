@@ -1,0 +1,147 @@
+name: livestream-detection
+services:
+  backend:
+    image: livestream-detection-backend:dev
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+    init: true
+    restart: "no"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?Set POSTGRES_DB in .env}
+      POSTGRES_USER: ${POSTGRES_USER:?Set POSTGRES_USER in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
+      # Explicit for both Windows-native and Linux-container CUDA workers.
+      DISABLE_ADDMM_CUDA_LT: "1"
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - type: bind
+        source: ./backend
+        target: /app/backend
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./speech
+        target: /app/speech
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./nlp
+        target: /app/nlp
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./tools
+        target: /app/tools
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./tests
+        target: /app/tests
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./config/data
+        target: /app/config/data
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./data/current
+        target: /app/data/current
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./pipeline_model.json
+        target: /app/pipeline_model.json
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./asr_config.json
+        target: /app/asr_config.json
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./alembic.ini
+        target: /app/alembic.ini
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./models/phobert_binary_v04_20261003_092559_043789
+        target: /app/models/phobert_binary_v04_20261003_092559_043789
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./runtime
+        target: /app/runtime
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./runtime/asr-models
+        target: /app/runtime/asr-models
+        read_only: true
+        bind: {create_host_path: false}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import json,urllib.request; h=json.load(urllib.request.urlopen('http://127.0.0.1:8000/health',timeout=5)); assert h.get('ready') and h.get('database',{}).get('ready')"]
+      interval: 15s
+      timeout: 8s
+      retries: 8
+      start_period: 180s
+    stop_grace_period: 90s
+  frontend:
+    image: livestream-detection-frontend:dev
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+    init: true
+    restart: "no"
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      VITE_API_BASE_URL: http://127.0.0.1:8000
+      CHOKIDAR_USEPOLLING: "true"
+    ports:
+      - "127.0.0.1:5173:5173"
+    volumes:
+      - type: bind
+        source: ./frontend
+        target: /app/frontend
+        bind: {create_host_path: false}
+      - frontend_node_modules:/app/frontend/node_modules
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:5173/').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
+  postgres:
+    image: postgres:17.11-bookworm
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?Set POSTGRES_DB in .env}
+      POSTGRES_USER: ${POSTGRES_USER:?Set POSTGRES_USER in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+volumes:
+  postgres_data:
+  frontend_node_modules:

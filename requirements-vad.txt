@@ -1,0 +1,2 @@
+# Install with --no-deps: bundled TorchScript uses the existing PyTorch.
+silero-vad==6.2.1

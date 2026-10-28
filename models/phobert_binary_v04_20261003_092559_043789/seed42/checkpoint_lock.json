@@ -1,0 +1,23 @@
+{
+  "status": "FROZEN",
+  "checkpoint": "D:\\livestream-violation-detection\\models\\phobert_binary_v04_20261003_092559_043789\\seed42\\best",
+  "classification_mode": "binary",
+  "frozen_at_utc": "2026-10-03T09:30:10.088781+00:00",
+  "file_sha256": {
+    "added_tokens.json": "6887f87ac991379ea91aedb4dd5e1af4f6ee38693ec0ca1c2b6209559ce283d8",
+    "bpe.codes": "9dfe53fb8abbddd3387da99641c36e00bee757a3679aad9cf0a7cdc4b30f6ef8",
+    "config.json": "392a84950d7fe6e8b3515386869c32c106c9de0d8fc8ff7a942b409f153f5656",
+    "model-00001-of-00005.safetensors": "a369b3e497116ac8cf28b69038fdcb79b2969c667ee2c81616477ec25f8ed05d",
+    "model-00002-of-00005.safetensors": "27ab59a803f1addc99fdeb813ac1bd9a7349116a326f8423c0ec0e01fda73790",
+    "model-00003-of-00005.safetensors": "55b0888e8996eb4250fb1280d1dcef198adf0502855e5ec498851d4da7a8a41e",
+    "model-00004-of-00005.safetensors": "963182264e03723ab442d89989e98768f6d177c47dbb51a645ac1d6f4c20af1d",
+    "model-00005-of-00005.safetensors": "6e573a7f6de746d1877ac5d21242f1e6a4aaeb1b540e9eefe05c64b2e76b9465",
+    "model.safetensors.index.json": "76a52309074de0ae2fdabc2fad55dba92e48f6b32963856ed02f05a141d59493",
+    "preprocessing.json": "1ba139091612004371d98ce1bbbcc28fe95fc83825a07ff2fe79c181250fe6b9",
+    "tokenizer_config.json": "551c1e392c11bda377e643e1481e0e5b0bb42e3589dd36f998ff3bc897841974",
+    "training_config.json": "aff23716321c0d6636744eb2958e1cf68138ee3ff76b31e4d37c265f4c642dec",
+    "validation_metrics.json": "ab4d0a95b90568e7b22ac5ce364d3ec7d37f5297c74cda54530f4202ff919adc",
+    "vocab.txt": "dffd7543c401fb6567253ae7c3313004532c33d062525250049c616544bad777"
+  },
+  "selection": "validation Macro-F1, tie lower loss; no test used"
+}

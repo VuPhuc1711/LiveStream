@@ -1,0 +1,397 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 0.49847961586504563,
+    "validation_loss": 0.3030102359601757,
+    "weighted_validation_loss": 0.3030102359601757,
+    "accuracy": 0.8846153846153846,
+    "macro_precision": 0.8941427699816962,
+    "macro_recall": 0.8013059701492538,
+    "macro_f1": 0.8332678968721372,
+    "per_label": {
+      "KHONG_CANH_BAO": {
+        "precision": 0.8791946308724832,
+        "recall": 0.9776119402985075,
+        "f1-score": 0.9257950530035336,
+        "support": 134.0
+      },
+      "CANH_BAO": {
+        "precision": 0.9090909090909091,
+        "recall": 0.625,
+        "f1-score": 0.7407407407407407,
+        "support": 48.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        131,
+        3
+      ],
+      [
+        18,
+        30
+      ]
+    ],
+    "label_order": [
+      "KHONG_CANH_BAO",
+      "CANH_BAO"
+    ],
+    "matrix_rows": "true",
+    "matrix_columns": "predicted",
+    "evaluation_precision": "fp32",
+    "train_eval": {
+      "loss": 0.22108861577556763,
+      "weighted_loss": 0.22108861577556763,
+      "accuracy": 0.928082191780822,
+      "macro_precision": 0.9352022058823529,
+      "macro_recall": 0.884959349593496,
+      "macro_f1": 0.9058064516129032,
+      "per_label": {
+        "KHONG_CANH_BAO": {
+          "precision": 0.921875,
+          "recall": 0.9833333333333333,
+          "f1-score": 0.9516129032258065,
+          "support": 420.0
+        },
+        "CANH_BAO": {
+          "precision": 0.9485294117647058,
+          "recall": 0.7865853658536586,
+          "f1-score": 0.86,
+          "support": 164.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          413,
+          7
+        ],
+        [
+          35,
+          129
+        ]
+      ],
+      "label_order": [
+        "KHONG_CANH_BAO",
+        "CANH_BAO"
+      ],
+      "matrix_rows": "true",
+      "matrix_columns": "predicted"
+    }
+  },
+  {
+    "epoch": 2,
+    "train_loss": 0.2764900570387684,
+    "validation_loss": 0.3252640680722114,
+    "weighted_validation_loss": 0.3252640680722114,
+    "accuracy": 0.9065934065934066,
+    "macro_precision": 0.9032634032634033,
+    "macro_recall": 0.849657960199005,
+    "macro_f1": 0.8716129299970954,
+    "per_label": {
+      "KHONG_CANH_BAO": {
+        "precision": 0.9090909090909091,
+        "recall": 0.9701492537313433,
+        "f1-score": 0.9386281588447654,
+        "support": 134.0
+      },
+      "CANH_BAO": {
+        "precision": 0.8974358974358975,
+        "recall": 0.7291666666666666,
+        "f1-score": 0.8045977011494253,
+        "support": 48.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        130,
+        4
+      ],
+      [
+        13,
+        35
+      ]
+    ],
+    "label_order": [
+      "KHONG_CANH_BAO",
+      "CANH_BAO"
+    ],
+    "matrix_rows": "true",
+    "matrix_columns": "predicted",
+    "evaluation_precision": "fp32",
+    "train_eval": {
+      "loss": 0.11312477159065079,
+      "weighted_loss": 0.11312477159065079,
+      "accuracy": 0.9708904109589042,
+      "macro_precision": 0.9739547791274282,
+      "macro_recall": 0.9537456445993031,
+      "macro_f1": 0.9631978707551332,
+      "per_label": {
+        "KHONG_CANH_BAO": {
+          "precision": 0.9675174013921114,
+          "recall": 0.9928571428571429,
+          "f1-score": 0.9800235017626322,
+          "support": 420.0
+        },
+        "CANH_BAO": {
+          "precision": 0.9803921568627451,
+          "recall": 0.9146341463414634,
+          "f1-score": 0.9463722397476341,
+          "support": 164.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          417,
+          3
+        ],
+        [
+          14,
+          150
+        ]
+      ],
+      "label_order": [
+        "KHONG_CANH_BAO",
+        "CANH_BAO"
+      ],
+      "matrix_rows": "true",
+      "matrix_columns": "predicted"
+    }
+  },
+  {
+    "epoch": 3,
+    "train_loss": 0.11836612675728098,
+    "validation_loss": 0.24871072280578888,
+    "weighted_validation_loss": 0.24871072280578888,
+    "accuracy": 0.9340659340659341,
+    "macro_precision": 0.9255599472990776,
+    "macro_recall": 0.9017412935323383,
+    "macro_f1": 0.9127237851662404,
+    "per_label": {
+      "KHONG_CANH_BAO": {
+        "precision": 0.9420289855072463,
+        "recall": 0.9701492537313433,
+        "f1-score": 0.9558823529411765,
+        "support": 134.0
+      },
+      "CANH_BAO": {
+        "precision": 0.9090909090909091,
+        "recall": 0.8333333333333334,
+        "f1-score": 0.8695652173913043,
+        "support": 48.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        130,
+        4
+      ],
+      [
+        8,
+        40
+      ]
+    ],
+    "label_order": [
+      "KHONG_CANH_BAO",
+      "CANH_BAO"
+    ],
+    "matrix_rows": "true",
+    "matrix_columns": "predicted",
+    "evaluation_precision": "fp32",
+    "train_eval": {
+      "loss": 0.02912964930794559,
+      "weighted_loss": 0.02912964930794559,
+      "accuracy": 0.988013698630137,
+      "macro_precision": 0.9918032786885246,
+      "macro_recall": 0.9786585365853658,
+      "macro_f1": 0.9849643418037641,
+      "per_label": {
+        "KHONG_CANH_BAO": {
+          "precision": 0.9836065573770492,
+          "recall": 1.0,
+          "f1-score": 0.9917355371900827,
+          "support": 420.0
+        },
+        "CANH_BAO": {
+          "precision": 1.0,
+          "recall": 0.9573170731707317,
+          "f1-score": 0.9781931464174455,
+          "support": 164.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          420,
+          0
+        ],
+        [
+          7,
+          157
+        ]
+      ],
+      "label_order": [
+        "KHONG_CANH_BAO",
+        "CANH_BAO"
+      ],
+      "matrix_rows": "true",
+      "matrix_columns": "predicted"
+    }
+  },
+  {
+    "epoch": 4,
+    "train_loss": 0.06859519255342766,
+    "validation_loss": 0.20105898216978269,
+    "weighted_validation_loss": 0.20105898216978269,
+    "accuracy": 0.9560439560439561,
+    "macro_precision": 0.9386363636363637,
+    "macro_recall": 0.9500932835820896,
+    "macro_f1": 0.9441460794844254,
+    "per_label": {
+      "KHONG_CANH_BAO": {
+        "precision": 0.9772727272727273,
+        "recall": 0.9626865671641791,
+        "f1-score": 0.9699248120300752,
+        "support": 134.0
+      },
+      "CANH_BAO": {
+        "precision": 0.9,
+        "recall": 0.9375,
+        "f1-score": 0.9183673469387755,
+        "support": 48.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        129,
+        5
+      ],
+      [
+        3,
+        45
+      ]
+    ],
+    "label_order": [
+      "KHONG_CANH_BAO",
+      "CANH_BAO"
+    ],
+    "matrix_rows": "true",
+    "matrix_columns": "predicted",
+    "evaluation_precision": "fp32",
+    "train_eval": {
+      "loss": 0.0017122965599474026,
+      "weighted_loss": 0.0017122965599474026,
+      "accuracy": 1.0,
+      "macro_precision": 1.0,
+      "macro_recall": 1.0,
+      "macro_f1": 1.0,
+      "per_label": {
+        "KHONG_CANH_BAO": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 420.0
+        },
+        "CANH_BAO": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 164.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          420,
+          0
+        ],
+        [
+          0,
+          164
+        ]
+      ],
+      "label_order": [
+        "KHONG_CANH_BAO",
+        "CANH_BAO"
+      ],
+      "matrix_rows": "true",
+      "matrix_columns": "predicted"
+    }
+  },
+  {
+    "epoch": 5,
+    "train_loss": 0.011377798456360574,
+    "validation_loss": 0.27085869734822826,
+    "weighted_validation_loss": 0.27085869734822826,
+    "accuracy": 0.9505494505494505,
+    "macro_precision": 0.9389282899921197,
+    "macro_recall": 0.9329912935323383,
+    "macro_f1": 0.9359029544120525,
+    "per_label": {
+      "KHONG_CANH_BAO": {
+        "precision": 0.9629629629629629,
+        "recall": 0.9701492537313433,
+        "f1-score": 0.966542750929368,
+        "support": 134.0
+      },
+      "CANH_BAO": {
+        "precision": 0.9148936170212766,
+        "recall": 0.8958333333333334,
+        "f1-score": 0.9052631578947369,
+        "support": 48.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        130,
+        4
+      ],
+      [
+        5,
+        43
+      ]
+    ],
+    "label_order": [
+      "KHONG_CANH_BAO",
+      "CANH_BAO"
+    ],
+    "matrix_rows": "true",
+    "matrix_columns": "predicted",
+    "evaluation_precision": "fp32",
+    "train_eval": {
+      "loss": 0.0007746480188048637,
+      "weighted_loss": 0.0007746480188048637,
+      "accuracy": 1.0,
+      "macro_precision": 1.0,
+      "macro_recall": 1.0,
+      "macro_f1": 1.0,
+      "per_label": {
+        "KHONG_CANH_BAO": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 420.0
+        },
+        "CANH_BAO": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 164.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          420,
+          0
+        ],
+        [
+          0,
+          164
+        ]
+      ],
+      "label_order": [
+        "KHONG_CANH_BAO",
+        "CANH_BAO"
+      ],
+      "matrix_rows": "true",
+      "matrix_columns": "predicted"
+    }
+  }
+]

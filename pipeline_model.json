@@ -1,5 +1,11 @@
 {
-  "version": "v03",
-  "checkpoint": "models/phobert_v03_20260915_145458_712323/best",
-  "promotion_protocol": "reports/final_test_v04/evaluation_protocol.json"
+  "version": "binary_v04",
+  "checkpoint": "models/phobert_binary_v04_20261003_092559_043789/seed42/best",
+  "classification_mode": "binary",
+  "classifier": "phobert_only",
+  "usage": "internal_user_trial_only",
+  "backend_device": "cpu",
+  "official_promotion_passed": false,
+  "rollback_config": "pipeline_model.before_binary_v04_demo.backup.json",
+  "authorized_by": "User request 2026-10-05: binary_v04 internal frontend trial only; no claim of real-world quality"
 }
